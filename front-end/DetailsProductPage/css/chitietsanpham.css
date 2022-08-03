@@ -672,7 +672,7 @@ body {
     color: black;
     text-align: center;
     justify-content: center;
-    margin-top: -50px;
+    margin-top: 30px;
 }
 
 #left-table p:last-child {
@@ -758,6 +758,16 @@ body {
     padding: 20px;
 }
 
+.review {
+    width: calc(100% - 40px);
+    background-color: #f3f4f6;
+    margin-left: 40px;
+    border-radius: 10px;
+    margin: auto;
+    border: 2px solid green;
+    padding: 20px;
+}
+
 .name {
     margin-top: 20px;
     font-weight: 600;
@@ -769,6 +779,10 @@ body {
     width: 30px;
     height: 30px;
     border-radius: 5px;
+}
+
+.review:last-child {
+    margin-bottom: 10px;
 }
 
 
