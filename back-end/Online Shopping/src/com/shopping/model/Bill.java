@@ -2,6 +2,7 @@ package com.shopping.model;
 
 import java.util.Date;
 
+
 public class Bill {
 	private Long id;
 	private String name;
