@@ -21,7 +21,7 @@ public class SaleDAO {
 		sessionFactory = HibernateUtil.getSessionFactory();
 	}
 	
-	public List<Sale> list() {
+	public List<Sale> findAll() {
 		try {
 			Session session = sessionFactory.openSession();
 			criteria = session.createCriteria(Sale.class);

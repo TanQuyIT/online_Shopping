@@ -117,4 +117,8 @@ public class OrderDAO {
 	public Order findById(long orderId) {
 		return (Order) sessionFactory.getCurrentSession().get(Order.class, orderId);
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 87e1a34dd83d1ccd7f422e6472c6d697a27c0104
