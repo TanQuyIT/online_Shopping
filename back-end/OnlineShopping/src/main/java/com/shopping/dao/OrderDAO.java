@@ -3,7 +3,7 @@ package com.shopping.dao;
 import java.util.List;
 
 import org.hibernate.HibernateException;
-import org.hibernate.query.Query;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -11,7 +11,7 @@ import org.hibernate.Transaction;
 import com.shopping.model.Order;
 import com.shopping.util.HibernateUtil;
 
-@SuppressWarnings({ "unchecked", "rawtypes" })
+@SuppressWarnings({ "unchecked", "rawtypes", "deprecation" })
 public class OrderDAO {
 	SessionFactory sessionFactory;
 
@@ -100,7 +100,7 @@ public class OrderDAO {
 			System.out.println(e.toString());
 		}
 	}
-	
+
 	public List<Order> findByBuyer(long userId) {
 		String sql = "SELECT o FROM Order o WHERE user_id = " + userId + " ORDER BY o.buyDate DESC";
 		Query query = sessionFactory.getCurrentSession().createQuery(sql);
@@ -117,8 +117,5 @@ public class OrderDAO {
 	public Order findById(long orderId) {
 		return (Order) sessionFactory.getCurrentSession().get(Order.class, orderId);
 	}
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> 87e1a34dd83d1ccd7f422e6472c6d697a27c0104

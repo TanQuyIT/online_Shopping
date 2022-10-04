@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.shopping.dao.ItemDAO;
 import com.shopping.dao.OrderDAO;
+import com.shopping.model.Order;
 
 
 @Controller
@@ -44,9 +45,9 @@ public class OrderManagementAdminController {
 	@GetMapping(value = "order-updateHome")
 	public String orderUpdateHome(HttpServletRequest request) {
 		long orderId = Long.parseLong(request.getParameter("orderId"));
-		OrderDTO orderDTO = orderDAO.findById(orderId);
-		orderDTO.setStatus("SUCCESS");
-		orderDAO.update(orderDTO);
+		Order order = orderDAO.findById(orderId);
+		order.setStatus("SUCCESS");
+		orderDAO.update(order);
 		return "redirect:/admin/home";
 	}
 
@@ -55,9 +56,9 @@ public class OrderManagementAdminController {
 	public String orderUpdate(HttpServletRequest request) {
 		int pageIndex = Integer.parseInt(request.getParameter("pageIndex"));
 		long orderId = Long.parseLong(request.getParameter("orderId"));
-		OrderDTO orderDTO = orderDAO.findById(orderId);
-		orderDTO.setStatus("SUCCESS");
-		orderDAO.update(orderDTO);
+		Order order = orderDAO.findById(orderId);
+		order.setStatus("SUCCESS");
+		orderDAO.update(order);
 		return "redirect:../admin/order-list?pageIndex=" + pageIndex;
 	}
 	

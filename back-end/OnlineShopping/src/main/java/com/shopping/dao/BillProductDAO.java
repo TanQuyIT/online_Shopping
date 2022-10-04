@@ -20,7 +20,7 @@ public class BillProductDAO {
 		sessionFactory = HibernateUtil.getSessionFactory();
 	}
 
-	@SuppressWarnings({ "unchecked", "deprecation" })
+	@SuppressWarnings({ "unchecked", "deprecation"})
 	public List<BillProduct> list() {
 		try {
 			Session session = sessionFactory.openSession();

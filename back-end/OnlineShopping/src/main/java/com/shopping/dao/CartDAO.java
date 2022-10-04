@@ -20,7 +20,7 @@ public class CartDAO {
 		sessionFactory = HibernateUtil.getSessionFactory();
 	}
 
-	@SuppressWarnings({ "unchecked", "deprecation" })
+	@SuppressWarnings({ "unchecked", "deprecation"})
 	public List<Cart> list() {
 		try {
 			Session session = sessionFactory.openSession();

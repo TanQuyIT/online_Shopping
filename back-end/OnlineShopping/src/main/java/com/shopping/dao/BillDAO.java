@@ -12,7 +12,7 @@ import org.hibernate.criterion.Order;
 import com.shopping.model.Bill;
 import com.shopping.util.HibernateUtil;
 
-@SuppressWarnings({ "unchecked", "deprecation" })
+@SuppressWarnings({ "unchecked"})
 public class BillDAO {
 	SessionFactory sessionFactory;
 	Criteria criteria = null;
@@ -21,6 +21,7 @@ public class BillDAO {
 		sessionFactory = HibernateUtil.getSessionFactory();
 	}
 	
+	@SuppressWarnings("deprecation")
 	public List<Bill> list() {
 		try {
 			Session session = sessionFactory.openSession();

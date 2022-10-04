@@ -30,6 +30,7 @@ public class CheckoutController {
 	@Autowired
 	private ItemDAO itemDao;
 	
+	@SuppressWarnings("unchecked")
 	@PostMapping(value = "/checkout")
 	public String checkout(HttpSession session) {
 		

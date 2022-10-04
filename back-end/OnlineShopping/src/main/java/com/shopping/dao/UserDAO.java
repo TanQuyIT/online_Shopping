@@ -8,7 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
-import org.hibernate.query.Query;
+import org.hibernate.Query;
 
 import com.shopping.model.User;
 import com.shopping.util.HibernateUtil;
@@ -30,6 +30,12 @@ public class UserDAO {
 		} catch (HibernateException e) {
 			System.out.println(e.toString());
 		}
+		return criteria.list();
+	}
+	
+	public List<User> findAll(int pageIndex, int pageSize) {
+		int first = pageIndex * pageSize;
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class).setFirstResult(first).setMaxResults(pageSize);
 		return criteria.list();
 	}
 
