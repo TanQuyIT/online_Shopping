@@ -25,7 +25,7 @@ public class RoleDAO {
 		try {
 			Session session = sessionFactory.openSession();
 			criteria = session.createCriteria(Role.class);
-			criteria.addOrder(Order.asc("bill_id"));
+			criteria.addOrder(Order.asc("role_id"));
 		} catch (HibernateException e) {
 			System.out.println(e.toString());
 		}
