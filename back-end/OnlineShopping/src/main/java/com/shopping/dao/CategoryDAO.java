@@ -33,10 +33,12 @@ public class CategoryDAO {
 		try {
 			Session session = sessionFactory.openSession();
 			criteria = session.createCriteria(Category.class);
-			criteria.addOrder(Order.asc("id"));
+			criteria.addOrder(Order.asc("category_id"));
+			
 		} catch (HibernateException e) {
 			System.out.println(e.toString());
 		}
 		return criteria.list();
+		
 	}
 }
