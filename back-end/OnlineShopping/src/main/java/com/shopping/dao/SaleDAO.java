@@ -25,7 +25,7 @@ public class SaleDAO {
 		try {
 			Session session = sessionFactory.openSession();
 			criteria = session.createCriteria(Sale.class);
-			criteria.addOrder(Order.asc("bill_id"));
+			criteria.addOrder(Order.asc("sale_id"));
 		} catch (HibernateException e) {
 			System.out.println(e.toString());
 		}

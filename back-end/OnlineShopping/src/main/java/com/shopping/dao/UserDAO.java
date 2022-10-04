@@ -25,7 +25,7 @@ public class UserDAO {
 		try {
 			Session session = sessionFactory.openSession();
 			criteria = session.createCriteria(User.class);
-			criteria.addOrder(Order.asc("bill_id"));
+			criteria.addOrder(Order.asc("user_id"));
 		} catch (HibernateException e) {
 			System.out.println(e.toString());
 		}
