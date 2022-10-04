@@ -8,10 +8,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
+import org.springframework.stereotype.Component;
 
 import com.shopping.model.BillProduct;
 import com.shopping.util.HibernateUtil;
 
+@Component
 public class BillProductDAO {
 	SessionFactory sessionFactory;
 	Criteria criteria = null;

@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.shopping.dao.UserDAO;
 import com.shopping.model.Role;
 import com.shopping.model.User;
 import com.shopping.model.UserPrincipal;
-import com.shopping.service.UserService;
 
 @Controller
 @RequestMapping(value = "/client")
 public class ProfileClientController {
 	
 	@Autowired
-	private UserService userService;
+	private UserDAO userDAO;
 	
 	@GetMapping(value = "/profile")
 	public String profile() {
@@ -58,7 +58,7 @@ public class ProfileClientController {
 		user.setPassword(userPrincipal.getPassword());
 		user.setRole(role);
 		
-		userService.update(user);
+		userDAO.update(user);
 		request.setAttribute("messageSuccess", "Update delivery information successful.");
 		return "client/profile";
 	}

@@ -8,10 +8,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
+import org.springframework.stereotype.Component;
 
 import com.shopping.model.Cart;
 import com.shopping.util.HibernateUtil;
 
+@Component
 public class CartDAO {
 	SessionFactory sessionFactory;
 	Criteria criteria = null;
@@ -20,7 +22,7 @@ public class CartDAO {
 		sessionFactory = HibernateUtil.getSessionFactory();
 	}
 
-	@SuppressWarnings({ "unchecked", "deprecation"})
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	public List<Cart> list() {
 		try {
 			Session session = sessionFactory.openSession();

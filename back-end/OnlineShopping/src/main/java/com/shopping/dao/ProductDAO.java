@@ -8,11 +8,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
+import org.springframework.stereotype.Component;
 import org.hibernate.Query;
 
 import com.shopping.model.Product;
 import com.shopping.util.HibernateUtil;
 
+@Component
 @SuppressWarnings({ "unchecked", "deprecation", "rawtypes" })
 public class ProductDAO {
 	SessionFactory sessionFactory;

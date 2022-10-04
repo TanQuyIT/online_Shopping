@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.shopping.dao.ProductDAO;
 import com.shopping.model.Item;
 import com.shopping.model.Product;
-import com.shopping.service.ProductService;
 
 @SuppressWarnings({ "unchecked", "unused" })
 @Controller
@@ -23,7 +23,7 @@ import com.shopping.service.ProductService;
 public class CartClientController {
 
 	@Autowired
-	private ProductService productService;
+	private ProductDAO productDAO;
 	
 	@GetMapping(value = "/cart")
 	public String cart(HttpServletRequest request, HttpSession session) {
@@ -54,7 +54,7 @@ public class CartClientController {
 	public String addToCart(HttpServletRequest request, HttpSession session,
 			@RequestParam(name = "productId") long productId) {
 		
-		Product product = productService.findById(productId);
+		Product product = productDAO.findById(productId);
 		float unitPrice = product.getPrice() - Math.round((product.getPrice() * product.getSale().getSalePercent() / 100));
 		
 		Object object = session.getAttribute("cart");
@@ -90,7 +90,7 @@ public class CartClientController {
 	@PostMapping(value = "/add-to-cart")
 	public String addToCart(HttpSession session, @RequestParam(name = "productId") long productId,
 			@RequestParam(name = "quantity") int quantity) {
-		Product productDTO = productService.findById(productId);
+		Product productDTO = productDAO.findById(productId);
 		float unitPrice = productDTO.getPrice() - Math.round((productDTO.getPrice() * productDTO.getSale().getSalePercent() / 100));
 		
 		Object object = session.getAttribute("cart");

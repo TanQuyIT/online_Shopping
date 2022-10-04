@@ -7,10 +7,12 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 import com.shopping.model.Order;
 import com.shopping.util.HibernateUtil;
 
+@Component
 @SuppressWarnings({ "unchecked", "rawtypes", "deprecation" })
 public class OrderDAO {
 	SessionFactory sessionFactory;

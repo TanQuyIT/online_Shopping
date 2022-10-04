@@ -8,27 +8,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.shopping.service.CategoryService;
-import com.shopping.service.ProductService;
+import com.shopping.dao.CategoryDAO;
+import com.shopping.dao.ProductDAO;
 
 @Controller
 @RequestMapping(value = "/client")
 public class HomeClientController {
 
 	@Autowired
-	private CategoryService categoryService;
+	private CategoryDAO categoryDAO;
 	
 	@Autowired
-	private ProductService productService;
+	private ProductDAO productDAO;
 	
 	
 	@GetMapping(value = "/home")
 	public String home(HttpServletRequest request, HttpSession session) {
-		request.setAttribute("hotOne", productService.hotProducts(0, 4));
-		request.setAttribute("hotTwo", productService.hotProducts(1, 4));
-		request.setAttribute("featuredOne", productService.featuredProducts(0, 4));
-		request.setAttribute("featuredTwo", productService.featuredProducts(1, 4));
-		session.setAttribute("categories", categoryService.findAll());
+		request.setAttribute("hotOne", productDAO.hotProducts(0, 4));
+		request.setAttribute("hotTwo", productDAO.hotProducts(1, 4));
+		request.setAttribute("featuredOne", productDAO.featuredProducts(0, 4));
+		request.setAttribute("featuredTwo", productDAO.featuredProducts(1, 4));
+		session.setAttribute("categories", categoryDAO.findAll());
 		return "client/home";
 	}
 }
