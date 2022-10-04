@@ -8,11 +8,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
+import org.hibernate.query.Query;
 
 import com.shopping.model.User;
 import com.shopping.util.HibernateUtil;
 
-@SuppressWarnings({ "unchecked", "deprecation" })
+@SuppressWarnings({ "unchecked", "deprecation", "rawtypes" })
 public class UserDAO {
 	SessionFactory sessionFactory;
 	Criteria criteria = null;
@@ -20,8 +21,8 @@ public class UserDAO {
 	public UserDAO() {
 		sessionFactory = HibernateUtil.getSessionFactory();
 	}
-	
-	public List<User> list() {
+
+	public List<User> findAll() {
 		try {
 			Session session = sessionFactory.openSession();
 			criteria = session.createCriteria(User.class);
@@ -44,7 +45,7 @@ public class UserDAO {
 		}
 	}
 
-	public User find(Long id) {
+	public User findById(Long id) {
 		User user = null;
 		try {
 			Session session = sessionFactory.openSession();
@@ -78,6 +79,37 @@ public class UserDAO {
 		} catch (HibernateException e) {
 			System.out.println(e.toString());
 		}
+	}
+
+	public User findByEmailOrPhoneAndPassword(String account, String password, boolean verity) {
+		Session session = sessionFactory.openSession();
+		String sql = "SELECT u FROM User u WHERE (u.email = '" + account + "' or u.phone = '" + account
+				+ "') and u.password = '" + password + "'";
+		Query query = session.createQuery(sql);
+		return (User) query.uniqueResult();
+	}
+
+	public User loadUserByUsername(String account) {
+		Session session = sessionFactory.openSession();
+		String sql = "SELECT u FROM User u WHERE (u.email = '" + account + "' or u.phone = '" + account + "')"
+				+ " and u.verify = true";
+		Query query = session.createQuery(sql);
+		return (User) query.uniqueResult();
+	}
+
+	public int count() {
+		Session session = sessionFactory.openSession();
+		String sql = "SELECT count(u) FROM User u";
+		Query query = session.createQuery(sql);
+		long count = (long) query.uniqueResult();
+		return (int) count;
+	}
+
+	public User findByEmail(String email) {
+		Session session = sessionFactory.openSession();
+		String sql = "SELECT u FROM User u WHERE u.email = '" + email + "'";
+		Query query = session.createQuery(sql);
+		return (User) query.uniqueResult();
 	}
 
 }

@@ -21,7 +21,7 @@ public class RoleDAO {
 		sessionFactory = HibernateUtil.getSessionFactory();
 	}
 	
-	public List<Role> list() {
+	public List<Role> findAll() {
 		try {
 			Session session = sessionFactory.openSession();
 			criteria = session.createCriteria(Role.class);
