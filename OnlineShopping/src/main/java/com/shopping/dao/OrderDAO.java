@@ -37,9 +37,10 @@ public class OrderDAO {
 	}
 
 	public List<Order> findAll(int pageIndex, int pageSize) {
+		Session session = sessionFactory.openSession();
 		String sql = "SELECT o FROM Order o ORDER BY o.buyDate DESC";
 		int first = pageIndex * pageSize;
-		Query query = sessionFactory.getCurrentSession().createQuery(sql).setFirstResult(first).setMaxResults(pageSize);
+		Query query = session.createQuery(sql).setFirstResult(first).setMaxResults(pageSize);
 		return query.list();
 	}
 
@@ -104,20 +105,23 @@ public class OrderDAO {
 	}
 
 	public List<Order> findByBuyer(long userId) {
+		Session session = sessionFactory.openSession();
 		String sql = "SELECT o FROM Order o WHERE user_id = " + userId + " ORDER BY o.buyDate DESC";
-		Query query = sessionFactory.getCurrentSession().createQuery(sql);
+		Query query = session.createQuery(sql);
 		return query.list();
 	}
 
 	public int count() {
+		Session session = sessionFactory.openSession();
 		String sql = "SELECT COUNT(o) FROM Order o";
-		Query query = sessionFactory.getCurrentSession().createQuery(sql);
+		Query query = session.createQuery(sql);
 		long count = (long) query.uniqueResult();
 		return (int) count;
 	}
 
 	public Order findById(long orderId) {
-		return (Order) sessionFactory.getCurrentSession().get(Order.class, orderId);
+		Session session = sessionFactory.openSession();
+		return (Order) session.get(Order.class, orderId);
 	}
 
 }

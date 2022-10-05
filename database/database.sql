@@ -1,5 +1,4 @@
-
-DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS category
 
 CREATE TABLE category(
     category_id number(19) NOT NULL primary key,
@@ -11,9 +10,9 @@ INSERT INTO category VALUES (1,'Vans authentic'),
                             (3,'Vans ERA'),
                             (4,'Vans old skool'),
                             (5,'Vans SK8'),
-                            (6,'Vans slip-on');
+                            (6,'Vans slip-on')
 
-DROP TABLE IF EXISTS item;
+DROP TABLE IF EXISTS item
 
 CREATE TABLE item(
     item_id number(50) NOT NULL AUTO_INCREMENT,
@@ -66,10 +65,10 @@ INSERT INTO item VALUES (9,51,77,1,14),
                         (47,47,60,2,36),
                         (48,51,76,1,37),
                         (49,51,76,1,38),
-                        (50,60,68,1,39);
+                        (50,60,68,1,39)
 
 
-DROP TABLE IF EXISTS order_user;
+DROP TABLE IF EXISTS order_user
 
 CREATE TABLE order_user(
     order_id number(50) NOT NULL AUTO_INCREMENT,
@@ -103,10 +102,10 @@ INSERT INTO TABLE order_user VALUES (14,'2022-09-27 00:00:00','SUCCESS',132,40),
                                     (36,'2022-10-03 00:00:00','SUCCESS',125,95),
                                     (37,'2022-10-03 00:00:00','PENDING',81,76),
                                     (38,'2022-10-03 00:00:00','PENDING',81,70),
-                                    (39,'2022-10-03 00:00:00','PENDING',73,40); 
+                                    (39,'2022-10-03 00:00:00','PENDING',73,40)
 
 
-DROP TABLE if EXISTS product;
+DROP TABLE if EXISTS product
 
 CREATE TABLE product(
     product_id number(50) NOT NULL AUTO_INCREMENT,
@@ -177,9 +176,9 @@ INSERT INTO product VALUES (44,'Vans Authentic 44 Dx Classic White - Anaheim Fac
                            (99,'Checkerboard Classic Better Seller','1609036841790.jpg',59,'Vans classic',837,2,'s30pc'),
                            (100,'Checkerboard Classic Better Seller','1609036892365.jpg',60,'Vans classic',458,2,'s30pc'),
                            (101,'Checkerboard Classic Better Seller','1609036918234.png',49,'Vans classic',635,2,'s10pc'),
-                           (107,'Checkerboard Classic Better Seller','1612540248195.jpg',64,'Vans classic',120,2,'s30pc');
+                           (107,'Checkerboard Classic Better Seller','1612540248195.jpg',64,'Vans classic',120,2,'s30pc')
 
-DROP TABLE IF EXISTS role;
+DROP TABLE IF EXISTS role
 
 CREATE TABLE role(
     role_id number(50) NOT NULL AUTO_INCREMENT,
@@ -189,9 +188,9 @@ CREATE TABLE role(
 
 INSERT INTO role VALUES (1,'ROLE_ADMIN'),
                         (2,'ROLE_MEMBER'),
-                        (3,'ROLE_USER');
+                        (3,'ROLE_USER')
 
-DROP TABLE IF EXISTS sale;
+DROP TABLE IF EXISTS sale
 
 CREATE TABLE sale(
     sale_id varchar(255) NOT NULL,
@@ -204,11 +203,11 @@ INSERT INTO sale VALUES ('default',0),
                         ('s20pc',20),
                         ('s30pc',30),
                         ('s40pc',40),
-                        ('s50',50);
+                        ('s50',50)
 
-DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS user_table
 
-CREATE TABLE user (
+CREATE TABLE user_table(
     user_id number(50) NOT NULL AUTO_INCREMENT,
     address varchar(255),
     full_name varchar(255),
@@ -224,30 +223,5 @@ CREATE TABLE user (
     foreign key role_id references role(role_id)
 )
 
-INSERT INTO user VALUES (31,'China - Tokyo - Mexico - Horykito','Mr. Admin',1,NULL,'$2a$10$KUTALTEnUXSZheyYXKyZw.mPIFgnwHxhyieKIrwRbrskBKPV.8u/u','0999999999',1,'1608484153089.png','admin@gmail.com',1),
-                        (32,'Thai Binh - Gia Loc','Ha Pham Cuong',1,NULL,'$2a$10$sKYN4nrCNEm/LmYGZGSx3..XduqrTuqmasmooyxstfkygmh79c6Re','0362748475',2,'1608524412799.png','luxyre@gmail.com',0),
-                        (33,'Koriert ytierhirer - Marikoriefrree - Mexico','Mrs. Acles Kuroier',0,NULL,'$2a$10$HMb8nsjSnhSr5FzD/vb3I.rG.f.hLP5qIb6oyJ7njWEVNBsSNHax.','0453726353',3,'1608540696277.png','sunfuric@gmail.com',0),
-                        (34,'Colobola - Lumburamiter - Austraylisaanber','Mrs. Maria Mores',0,NULL,'$2a$10$RXZ7UGUWyfOjKwFRfoq8ceCZEXDE4/9ItsBzCRtEVIehPg9xXSXki','0462537263',2,'1608536572729.png','herfiter@gmail.com',0),
-                        (35,'Mexico - Muroitoraka - Kukakiroierplo - Culalumbura','Mr. Profiler Lusises',1,NULL,'$2a$10$QEHUv/yAgL3mOvWYZdZwaeL7.cC82VYcxA.5kq0X/yyRBGnlsaicK','0874637464',3,'1612351921316.png','lokozama@gmail.com',1),
-                        (36,'Phu Tho - Cao Bang','Mr. Long Body',1,NULL,'$2a$10$Cd5zbZU3NR4jCbGZB8v19elYJ24JFGJNQSXpVIN2Fkvm7JeykywsW','0973645345',2,'1608542398338.png','atermar@gmail.com',0),
-                        (37,'Nam Dinh - Gia Loc - Hai Duong','Mr. Aloha',1,NULL,'$2a$10$ak76PjGuiUpR2Ln4Y.8Wke//JnWnad6bv8u7IydLMH0JufQ3Y9tha','0349347234',1,'1612540130590.png','aloha@gmail.com',0),
-                        (40,'FPT University - Thach That - Ha Noi','Ha Van Quang',0,NULL,'$2a$10$d5NAjxsbcz7G251w2undHejUBfdZTvZxu8nrK8rgymoJiIVyUOoBq','0968904962',3,'1609219156198.png','coosi29@gmail.com',1),
-                        (70,'Mexico - America - Suner','Mr.Alibaba',0,NULL,'$2a$10$UoDaMVKoHQUSQPgCh9z4b.z/InnYcI/8fvuTbNzVxn3Qq93SdVYFO','012-736-9403',3,'1608541027514.png','alibaba@gmail.com',1),
-                        (73,NULL,NULL,0,NULL,'$2a$10$wQTtiuhxr7sMkeGE0GvA3OYsHCbR/47IzUlBryGdKd5l684StR/Re',NULL,3,'1609219156198.png','mist@gmail.com',1),
-                        (74,NULL,NULL,0,NULL,'$2a$10$6NjaSR.IDkLhL.7wRUbbYO.FSWAxI1lmCdSVN.jTSwGtAWXbr340W',NULL,3,'1608484153089.png','tutitu@gmail.com',1),
-                        (75,NULL,NULL,0,NULL,'$2a$10$IqI3L0h0u.PbJJ9ZBH7Kg.1FRl2uUv6RzkhCCxKTSVrMsrE7xcaLu',NULL,3,'1608484153089.png','vituver@gmail.com',1),
-                        (76,'Southern California - America','Mr. Memory',0,NULL,'$2a$10$OEFg0tRbevdcwAp2d8gXW.xNSft55kBsHP6FDc.wOD1pe5/Nn.Dzy','043-045-3562',3,'1608484153089.png','memory@gmail.com',1),
-                        (78,'Lai Cach - Xua Giang - Soc Son - Ha Noi','Mr. Quang',0,NULL,'$2a$10$BCAIKnWcbxUmj.81TxirUOtwlzDL1b2/FflK3xQ/G/NseBL/XdbMC','0946283645',3,'1608484153089.png','quanghvhe140233@fpt.edu.vn',1),
-                        (79,'Futura - Tokyo - Japan','Mr. Discount',0,NULL,'$2a$10$LM7P5.BShyKGQnoXP6CACuEI7pOEQZJ.TA0e6oTdxr6KDXHLTKxPK','023-423-3826',3,'1608484153089.png','discount@gmail.com',1),
-                        (80,NULL,NULL,0,NULL,'$2a$10$cKB21MKCWx8YkqLxqYjKHOT20uOKW.fgc3zjBdtf6fMxqdhw/6jBW',NULL,3,'1608484153089.png','nobita@gmail.com',1),
-                        (81,'Atarakasta - Loberbitoi - Mohades','Mr. Suzuki',0,NULL,'$2a$10$6qXsuicu7WZmG6np7jQeaOU6zo/w5vDthejVUTVZjRR9wWEKv0DwC','0526357363',3,'1608484153089.png','suziki@gmail.com',1),
-                        (82,NULL,NULL,0,NULL,'$2a$10$knB5HeS54LHcvvxS/XlNGOkqJF/OJqEiEQhAaxG2fl2uHWQlKPd6.',NULL,3,'1608484153089.png','vinhxiem2004@gmail.com',1),
-                        (84,'132 Chu Van An - Cau Giay - Ha Noi','Mr. Create',1,NULL,'$2a$10$k5tDvXLhGg2a.w2qVi3P2egWtmLQCtGk1xmnjey7Z9UcnlyLOrmoy','0937352647',1,'1612349833775.png','create@gmail.com',0),
-                        (88,NULL,NULL,0,NULL,'$2a$10$Sq1gFN4bhRTmC1WT8c6PJuBs9s0qtIA6Y.aongdJD3pt50c1YFB4K',NULL,3,'1608484153089.png','nguyendinhkhue14102000@gmail.com',1),
-                        (89,NULL,NULL,0,NULL,'$2a$10$dgttFgJkC.8ogpd7hjWHyuTSw/loUnu8yKQlthgL678GGH0QP8wH6',NULL,3,'1608484153089.png','sads@gmail.com',0),
-                        (90,NULL,NULL,0,NULL,'$2a$10$2pJAHf1spIjeDhm40B.fWuxNi5UxPn6ztXU9wKLH1VL4YdZ4VWdp.',NULL,3,'1608484153089.png','QDSF@gmail.com',0),
-                        (91,NULL,NULL,0,NULL,'$2a$10$5.pCxBFFYzMq7056r6TNNODzOfC/FyFuakI8EeywoQmVHUjU61oxa',NULL,3,'1608484153089.png','ass1d@gmail.com',0),
-                        (92,NULL,NULL,0,NULL,'$2a$10$A8r57H93QmIikC4gBQwuL.M1L7AnGRXWzByJvzwnQP/PfZhBUxopW',NULL,3,'1608484153089.png','lucurata@gmail.com',1),
-                        (93,NULL,NULL,0,NULL,'$2a$10$idBT4HXAlkdaBws8PJBryueDlj1sOApoOb2HEEITPATB1Wkyjlqca',NULL,3,'1608484153089.png','locota@gmail.com',0),
-                        (94,NULL,NULL,0,NULL,'$2a$10$CEwil.cgd.N9LyPIx3mIrO5qGCdAiaZlVoNaKVIefsA5vwVh7oQn2',NULL,3,'1608484153089.png','lukuta@gmail.com',1),
-                        (95,'FPT University - Hoa Lac - Thach That - Ha Noi','Mr. Mo Mo',0,NULL,'$2a$10$vfbGaiCUzXnAJL5gX5EmmeoKgDfFmuTVzoCUR6QXc.gwDpKj4zuyC','0973645345',3,'1608484153089.png','amomo@gmail.com',1);
+
+INSERT INTO user_table VALUES (31,'China - Tokyo - Mexico - Horykito','Mr. Admin',1,NULL,'$2a$10$KUTALTEnUXSZheyYXKyZw.mPIFgnwHxhyieKIrwRbrskBKPV.8u/u','0999999999',1,'1608484153089.png','admin@gmail.com',1);

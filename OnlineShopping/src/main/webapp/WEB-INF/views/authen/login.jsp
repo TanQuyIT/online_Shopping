@@ -47,11 +47,7 @@
 				</div>
 			</div>
 			<div class="auth-form-social">
-				<a href="#" class="btn-social-fb"><i class='fab'
-					style="font-size: 20px;">&#xf09a;</i> Login with Facebook </a> <a
-					href="#" class="btn-social-gg"><i class='fab'
-					style='font-size: 20px; color: tomato'>&#xf2b3;</i> Login with
-					Google </a>
+			
 			</div>
 		</div>
 	</form>

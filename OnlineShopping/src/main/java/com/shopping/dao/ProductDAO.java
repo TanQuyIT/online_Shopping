@@ -97,48 +97,55 @@ public class ProductDAO {
 	}
 
 	public List<Product> findAll(int pageIndex, int pageSize) {
+		Session session = sessionFactory.openSession();
 		int first = pageIndex * pageSize;
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class).setFirstResult(first).setMaxResults(pageSize);
+		Criteria criteria = session.createCriteria(Product.class).setFirstResult(first).setMaxResults(pageSize);
 		return criteria.list();
 	}
 
 	public List<Product> findAllByCategoryId(long catgoryId, int pageIndex, int pageSize) {
+		Session session = sessionFactory.openSession();
 		String sql = "SELECT p FROM Product p WHERE p.category.categoryId = " + catgoryId;
 		int first = pageIndex * pageSize;
-		Query query = sessionFactory.getCurrentSession().createQuery(sql).setFirstResult(first).setMaxResults(pageSize);
+		Query query = session.createQuery(sql).setFirstResult(first).setMaxResults(pageSize);
 		return query.list();
 	}
 
 	public int count() {
+		Session session = sessionFactory.openSession();
 		String sql = "SELECT COUNT(p) FROM Product p";
-		Query query = sessionFactory.getCurrentSession().createQuery(sql);
+		Query query = session.createQuery(sql);
 		long count = (long) query.uniqueResult();
 		return (int) count;
 	}
 
 	public int countByCategoryId(long categoryId) {
+		Session session = sessionFactory.openSession();
 		String sql = "SELECT COUNT(p) FROM Product p where p.category.categoryId = " + categoryId; 
-		Query query = sessionFactory.getCurrentSession().createQuery(sql);
+		Query query = session.createQuery(sql);
 		long count = (long) query.uniqueResult();
 		return (int) count;
 	}
 
 	public List<Product> hotProducts(int pageIndex, int pageSize) {
+		Session session = sessionFactory.openSession();
 		String sql = "SELECT p FROM Product p ORDER BY p.price DESC";
 		int first = pageIndex * pageSize;
-		Query query = sessionFactory.getCurrentSession().createQuery(sql).setFirstResult(first).setMaxResults(pageSize);
+		Query query = session.createQuery(sql).setFirstResult(first).setMaxResults(pageSize);
 		return query.list();
 	}
 
 	public List<Product> featuredProducts(int pageIndex, int pageSize) {
+		Session session = sessionFactory.openSession();
 		String sql = "SELECT p FROM Product p WHERE p.category.categoryId = 6 ORDER BY p.price DESC";
 		int first = pageIndex * pageSize;
-		Query query = sessionFactory.getCurrentSession().createQuery(sql).setFirstResult(first).setMaxResults(pageSize);
+		Query query = session.createQuery(sql).setFirstResult(first).setMaxResults(pageSize);
 		return query.list();
 	}
 
 	public List<Product> search(long categoryId, String pricing, float priceFrom, float priceTo, String sort, String text, int pageIndex,
 			int pageSize) {
+		Session session = sessionFactory.openSession();
 		String sql = "SELECT p FROM Product p WHERE p.category.categoryId = " + categoryId;
 		if (pricing != null && !pricing.equals("default") && !pricing.equals("")) {
 			sql += " and ((p.price - (p.price * p.sale.salePercent / 100)) >= " + priceFrom + " and (p.price - (p.price * p.sale.salePercent / 100)) <= " + priceTo + ")";
@@ -153,11 +160,12 @@ public class ProductDAO {
 		}
 		
 		int first = pageIndex * pageSize;
-		Query query = sessionFactory.getCurrentSession().createQuery(sql).setFirstResult(first).setMaxResults(pageSize);
+		Query query = session.createQuery(sql).setFirstResult(first).setMaxResults(pageSize);
 		return query.list();
 	}
 
 	public int countBySearch(long categoryId, String pricing, float priceFrom, float priceTo, String text) {
+		Session session = sessionFactory.openSession();
 		String sql = "SELECT COUNT(p) FROM Product p where p.category.categoryId = " + categoryId; 
 		
 		if (pricing != null && !pricing.equals("default") && !pricing.equals("")) {
@@ -167,7 +175,7 @@ public class ProductDAO {
 		if (text != null) {
 			sql += " and p.productName like '%" + text + "%'";
 		}
-		Query query = sessionFactory.getCurrentSession().createQuery(sql);
+		Query query = session.createQuery(sql);
 		long count = (long) query.uniqueResult();
 		return (int) count;
 	}

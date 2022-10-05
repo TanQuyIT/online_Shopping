@@ -26,9 +26,9 @@ public class HibernateUtil {
 			Logger log = Logger.getLogger("org.hibernate");
 			log.setLevel(Level.OFF);
 			System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.NoOpLog");
-			ResourceBundle rb = ResourceBundle.getBundle("oracle");
+			ResourceBundle rb = ResourceBundle.getBundle("com.shopping.util.oracle");
 			Configuration configuration = new Configuration();
-			configuration.configure("hibernate.configuration.xml");
+			configuration.configure("hibernate.cfg.xml");
 			configuration.setProperty("hibernate.connection.url", rb.getString("db.url"));
 			configuration.setProperty("hibernate.connection.username", rb.getString("db.username"));
 			configuration.setProperty("hibernate.connection.password", rb.getString("db.password"));
