@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="resource/common/authen.css">
+<style><%@include file="/WEB-INF/resource/common/authen.css"%></style>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <body style="background-image: url(resource/client/images/bg.jpg);">
