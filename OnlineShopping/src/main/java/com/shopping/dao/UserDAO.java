@@ -34,10 +34,11 @@ public class UserDAO {
 		}
 		return criteria.list();
 	}
-	
+
 	public List<User> findAll(int pageIndex, int pageSize) {
 		int first = pageIndex * pageSize;
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class).setFirstResult(first).setMaxResults(pageSize);
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class).setFirstResult(first)
+				.setMaxResults(pageSize);
 		return criteria.list();
 	}
 
@@ -114,10 +115,16 @@ public class UserDAO {
 	}
 
 	public User findByEmail(String email) {
-		Session session = sessionFactory.openSession();
-		String sql = "SELECT u FROM User u WHERE u.email = '" + email + "'";
-		Query query = session.createQuery(sql);
-		return (User) query.uniqueResult();
+		try {
+			Session session = sessionFactory.openSession();
+			String sql = "SELECT u FROM User u WHERE u.email = :email";
+			User user = (User) session.createQuery(sql).setParameter("email", email).uniqueResult();
+			session.close();
+			return user;
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			return null;
+		}
 	}
 
 }

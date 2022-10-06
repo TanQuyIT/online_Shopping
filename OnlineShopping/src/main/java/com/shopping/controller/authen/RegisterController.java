@@ -1,9 +1,6 @@
 package com.shopping.controller.authen;
 
-import java.security.SecureRandom;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -30,7 +27,6 @@ public class RegisterController {
 	@PostMapping(value = "/register")
 	public String register(HttpServletRequest request, @RequestParam(name = "email") String email,
 			@RequestParam(name = "password") String password, @RequestParam(name = "repassword") String repassword) {
-		String code = randomString(8);
 		if (userDAO.findByEmail(email) != null) {
 			User user = userDAO.findByEmail(email);
 			if (user.isVerify() == true) {
@@ -55,29 +51,21 @@ public class RegisterController {
 				request.setAttribute("email", email);
 				return "authen/register";
 			} else {
-				User user = new User();
-				user.setEmail(email);
-				user.setPassword(new BCryptPasswordEncoder().encode(password));
-				user.setAvatar("1608484153089.png");
-				Role role = new Role();
-				role.setRoleId(3);
-				user.setRole(role);
-				userDAO.insert(user);
+				try {
+					User user = new User();
+					user.setEmail(email);
+					user.setPassword(new BCryptPasswordEncoder().encode(password));
+					user.setAvatar("1608484153089.png");
+					Role role = new Role();
+					role.setRoleId(3);
+					user.setRole(role);
+					user.setVerify(true);
+					userDAO.insert(user);
+				} catch (Exception e) {
+					System.out.println(e.toString());
+				}
 			}
 		}
-		HttpSession session = request.getSession();
-		session.setAttribute("emailRegister", email);
-		session.setAttribute("codeVerify", code);
-		return "authen/verify";
-	}
-
-	static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	static SecureRandom rnd = new SecureRandom();
-
-	String randomString(int len) {
-		StringBuilder sb = new StringBuilder(len);
-		for (int i = 0; i < len; i++)
-			sb.append(AB.charAt(rnd.nextInt(AB.length())));
-		return sb.toString();
+		return "authen/login";
 	}
 }
