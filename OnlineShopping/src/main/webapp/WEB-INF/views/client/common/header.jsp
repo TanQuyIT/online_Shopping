@@ -27,7 +27,7 @@
 			<div class="row">
 				<div class="col-md-2 col-sm-2">
 					<div class="logo">
-						<a href="index.html"><img
+						<a href="../../index.jsp"><img
 							src="../resource/client/images/logo.png" alt="FlatShop"></a>
 					</div>
 				</div>

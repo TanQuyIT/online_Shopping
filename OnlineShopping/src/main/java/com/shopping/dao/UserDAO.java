@@ -4,12 +4,11 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Component;
-import org.hibernate.Query;
 
 import com.shopping.model.User;
 import com.shopping.util.HibernateUtil;
@@ -28,17 +27,17 @@ public class UserDAO {
 		try {
 			Session session = sessionFactory.openSession();
 			criteria = session.createCriteria(User.class);
-			criteria.addOrder(Order.asc("user_id"));
+			return criteria.list();
 		} catch (HibernateException e) {
 			System.out.println(e.toString());
 		}
-		return criteria.list();
+		return null;
 	}
 
 	public List<User> findAll(int pageIndex, int pageSize) {
 		int first = pageIndex * pageSize;
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class).setFirstResult(first)
-				.setMaxResults(pageSize);
+		Session session = sessionFactory.openSession();
+		Criteria criteria = session.createCriteria(User.class).setFirstResult(first).setMaxResults(pageSize);
 		return criteria.list();
 	}
 

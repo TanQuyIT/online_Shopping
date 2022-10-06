@@ -7,7 +7,6 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -31,12 +30,11 @@ public class CategoryDAO {
 		try {
 			Session session = sessionFactory.openSession();
 			criteria = session.createCriteria(Category.class);
-			criteria.addOrder(Order.asc("category_id"));
+			return criteria.list();
 			
 		} catch (HibernateException e) {
 			System.out.println(e.toString());
 		}
-		return criteria.list();
-		
+		return null;
 	}
 }

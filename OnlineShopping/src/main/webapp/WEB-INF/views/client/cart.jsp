@@ -9,17 +9,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="../resource/client/images/favicon.png">
 <title>Welcome to FlatShop</title>
-<link href="../resource/client/css/bootstrap.css" rel="stylesheet">
+<link href="/resource/client/css/bootstrap.css" rel="stylesheet">
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,100italic,100'
 	rel='stylesheet' type='text/css'>
-<link href="../resource/client/css/font-awesome.min.css"
-	rel="stylesheet">
-<link rel="stylesheet" href="../resource/client/css/flexslider.css"
+<link href="/resource/client/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/resource/client/css/flexslider.css"
 	type="text/css" media="screen" />
-<link href="../resource/client/css/sequence-looptheme.css"
+<link href="/resource/client/css/sequence-looptheme.css"
 	rel="stylesheet" media="all" />
-<link href="../resource/client/css/style.css" rel="stylesheet">
+<link href="/resource/client/css/style.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script><![endif]-->
@@ -54,12 +53,11 @@
 										<c:forEach items="${sessionScope.cart}" var="cart">
 											<tr>
 												<td><a
-													href="product-details?productId=${cart.value.productDTO.productId}"><img
-														src="../download?image=${cart.value.productDTO.image}"
-														alt=""></a></td>
+													href="product-details?productId=${cart.value.product.productId}"><img
+														src="../download?image=${cart.value.product.image}" alt=""></a></td>
 												<td>
 													<div class="shop-details">
-														<div class="productname">${cart.value.productDTO.productName}</div>
+														<div class="productname">${cart.value.product.productName}</div>
 														<p>
 															<img alt="" src="../resource/client/images/star.png">
 															<a class="review_num" href="#"> 02 Review(s) </a>
@@ -67,19 +65,18 @@
 
 														<p>${product.description}</p>
 														<p>
-															Sale : <strong class="pcode">-${cart.value.productDTO.saleDTO.salePercent}%</strong>
+															Sale : <strong class="pcode">-${cart.value.product.sale.salePercent}%</strong>
 														</p>
 														<p>
-															Product Code : <strong class="pcode">${cart.value.productDTO.productId}</strong>
+															Product Code : <strong class="pcode">${cart.value.product.productId}</strong>
 														</p>
 													</div>
 												</td>
 												<td>
 													<h5 style="color: #41B314; font-weight: bold;">$${cart.value.unitPrice}0</h5>
-													<c:if
-														test="${cart.value.productDTO.saleDTO.salePercent > 0}">
+													<c:if test="${cart.value.product.sale.salePercent > 0}">
 														<p
-															style="font-size: 16px; padding-top: 7px; text-decoration: line-through;">$${cart.value.productDTO.price}0</p>
+															style="font-size: 16px; padding-top: 7px; text-decoration: line-through;">$${cart.value.product.price}0</p>
 													</c:if>
 												</td>
 												<td>
@@ -93,8 +90,7 @@
 																	value="${i}">${i}</option>
 															</c:forEach>
 															<input type="hidden"
-															value="${cart.value.productDTO.productId}"
-															name="productId" />
+															value="${cart.value.product.productId}" name="productId" />
 														</select>
 													</form>
 												</td>
@@ -106,7 +102,7 @@
 													</h5>
 												</td>
 												<td><a
-													href="delete-from-cart?productId=${cart.value.productDTO.productId}">
+													href="delete-from-cart?productId=${cart.value.product.productId}">
 														<i class="material-icons">&#xe92b;</i>
 												</a></td>
 											</tr>

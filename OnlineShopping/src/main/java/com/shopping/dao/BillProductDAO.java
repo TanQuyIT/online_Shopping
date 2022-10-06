@@ -7,7 +7,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Component;
 
 import com.shopping.model.BillProduct;
@@ -27,11 +26,11 @@ public class BillProductDAO {
 		try {
 			Session session = sessionFactory.openSession();
 			criteria = session.createCriteria(BillProduct.class);
-			criteria.addOrder(Order.asc("billproduct_id"));
+			return criteria.list();
 		} catch (HibernateException e) {
 			System.out.println(e.toString());
 		}
-		return criteria.list();
+		return null;
 	}
 
 	public void insert(BillProduct billProduct) {

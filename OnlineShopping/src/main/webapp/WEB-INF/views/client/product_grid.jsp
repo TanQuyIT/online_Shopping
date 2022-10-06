@@ -9,17 +9,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="../resource/client/images/favicon.png">
 <title>Welcome to FlatShop</title>
-<link href="../resource/client/css/bootstrap.css" rel="stylesheet">
+<link href="/resource/client/css/bootstrap.css" rel="stylesheet">
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,100italic,100'
 	rel='stylesheet' type='text/css'>
-<link href="../resource/client/css/font-awesome.min.css"
-	rel="stylesheet">
-<link rel="stylesheet" href="..resource/client/css/flexslider.css"
+<link href="/resource/client/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="resource/client/css/flexslider.css"
 	type="text/css" media="screen" />
-<link href="../resource/client/css/sequence-looptheme.css"
+<link href="/resource/client/css/sequence-looptheme.css"
 	rel="stylesheet" media="all" />
-<link href="../resource/client/css/style.css" rel="stylesheet">
+<link href="/resource/client/css/style.css" rel="stylesheet">
 <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script><![endif]-->
 </head>
 <body id="home">
@@ -78,7 +77,7 @@
 						<div class="fbl-box leftbar">
 							<h3 class="title">Facebook</h3>
 							<span class="likebutton"> <a href="#"> <img
-									src="../resource/client/images/fblike.png" alt="">
+									src="/resource/client/images/fblike.png" alt="">
 							</a>
 							</span>
 							<p>12k people like Flat Shop.</p>
@@ -94,14 +93,14 @@
 							</ul>
 							<div class="fbplug">
 								<a href="#"> <span> <img
-										src="../resource/client/images/fbicon.png" alt="">
+										src="/resource/client/images/fbicon.png" alt="">
 								</span> Facebook social plugin
 								</a>
 							</div>
 						</div>
 						<div class="clearfix"></div>
 						<div class="leftbanner">
-							<img src="../resource/client/images/vans.jpg" alt="">
+							<img src="/resource/client/images/vans.jpg" alt="">
 						</div>
 					</div>
 					<div class="col-md-9">
@@ -116,7 +115,7 @@
 								<c:forEach items="${products}" var="product">
 									<div class="col-md-4 col-sm-6">
 										<div class="products">
-											<div class="offer">-${product.saleDTO.salePercent}%</div>
+											<div class="offer">-${product.sale.salePercent}%</div>
 											<div class="thumbnail">
 												<a href="product-details?productId=${product.productId}"><img
 													style="width: 90%;"
@@ -124,18 +123,18 @@
 											</div>
 											<div class="productname">${product.productName}</div>
 
-											<c:if test="${product.saleDTO.salePercent == 0}">
+											<c:if test="${product.sale.salePercent == 0}">
 												<span class="price"
 													style="font-size: 15px; color: black; text-decoration: line-through; margin-bottom: 0px; margin-top: -5px;">.</span>
 												<span class="price">$${product.price - (product.price
-													* product.saleDTO.salePercent / 100)}0</span>
+													* product.sale.salePercent / 100)}0</span>
 											</c:if>
 
-											<c:if test="${product.saleDTO.salePercent != 0}">
+											<c:if test="${product.sale.salePercent != 0}">
 												<span class="price"
 													style="font-size: 15px; color: black; text-decoration: line-through; margin-bottom: 0px; margin-top: -5px;">$${product.price}0</span>
 												<span class="price">$${product.price - (product.price
-													* product.saleDTO.salePercent / 100)}0</span>
+													* product.sale.salePercent / 100)}0</span>
 											</c:if>
 
 											<div class="button_group">

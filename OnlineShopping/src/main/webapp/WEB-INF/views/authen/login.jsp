@@ -6,7 +6,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>
-<style><%@include file="/WEB-INF/resource/common/authen.css"%></style>
+<link rel="stylesheet"
+	href="<c:url value='/resource/common/authen.css'/>">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <body style="background-image: url(resource/client/images/bg.jpg);">
@@ -46,9 +47,7 @@
 					<button type="submit" class="btn" style="cursor: pointer;">Login</button>
 				</div>
 			</div>
-			<div class="auth-form-social">
-			
-			</div>
+			<div class="auth-form-social"></div>
 		</div>
 	</form>
 </body>

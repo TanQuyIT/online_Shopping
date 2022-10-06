@@ -8,7 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.Criteria;
-import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -71,7 +70,6 @@ public class ItemDAO {
 
 		@SuppressWarnings("deprecation")
 		Criteria cr = session.createCriteria(Item.class);
-		cr.addOrder(Order.asc("item_id"));
 
 		List<Item> allItems = cr.list();
 		List<Item> resultItems = new ArrayList<>();

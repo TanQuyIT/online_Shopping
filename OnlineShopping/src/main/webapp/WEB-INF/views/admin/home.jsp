@@ -11,18 +11,19 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <!-- VENDOR CSS -->
 <link rel="stylesheet"
-	href="<c:url value='../resource/admin/assets/vendor/bootstrap/css/bootstrap.min.css'/>">
+	href="${pageContext.request.contextPath}/resource/admin/assets/vendor/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet"
-	href="<c:url value='../resource/admin/assets/vendor/font-awesome/css/font-awesome.min.css'/>">
+	href="${pageContext.request.contextPath}/resource/admin/assets/vendor/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet"
-	href="<c:url value='../resource/admin/assets/vendor/linearicons/style.css'/>">
+	href="${pageContext.request.contextPath}/resource/admin/assets/vendor/linearicons/style.css">
 <link rel="stylesheet"
-	href="<c:url value='../resource/admin/assets/vendor/chartist/css/chartist-custom.css'/>">
+	href="${pageContext.request.contextPath}/resource/admin/assets/vendor/chartist/css/chartist-custom.css">
 <!-- MAIN CSS -->
+<link
+	href="${pageContext.request.contextPath}/resource/admin/assets/css/main.css"
+	rel="stylesheet">
 <link rel="stylesheet"
-	href="<c:url value='../resource/admin/assets/css/main.css'/>">
-<link rel="stylesheet"
-	href="<c:url value='../resource/admin/assets/css/demo.css'/>">
+	href="${pageContext.request.contextPath}/resource/admin/assets/css/demo.css">
 <!-- GOOGLE FONTS -->
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
@@ -30,9 +31,9 @@
 
 <!-- ICONS -->
 <link rel="apple-touch-icon" sizes="76x76"
-	href="<c:url value='../resource/admin/assets/img/apple-icon.png'/>">
+	href="${pageContext.request.contextPath}/resource/admin/assets/img/apple-icon.png">
 <link rel="icon" type="image/png" sizes="96x96"
-	href="<c:url value='../resource/admin/assets/img/favicon.png'/>">
+	href="${pageContext.request.contextPath}/resource/admin/assets/img/favicon.png">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
@@ -127,7 +128,7 @@
 													<c:forEach items="${orders}" var="order">
 														<tr>
 															<td><a href="#">No. ${order.orderId}</a></td>
-															<td>${order.userDTO.email.split("@")[0]}</td>
+															<td>${order.user.email.split("@")[0]}</td>
 															<td>$${order.priceTotal}0</td>
 															<td>${order.buyDate}</td>
 															<c:if test="${order.status eq 'PENDING'}">

@@ -38,7 +38,7 @@
 					<c:forEach items="${hotOne}" var="product">
 						<div class="col-md-3 col-sm-6">
 							<div class="products">
-								<div class="offer">-${product.saleDTO.salePercent}%</div>
+								<div class="offer">-${product.sale.salePercent}%</div>
 								<div class="thumbnail">
 									<a href="product-details?productId=${product.productId}"><img
 										style="width: 90%;" src="../download?image=${product.image}"
@@ -46,18 +46,18 @@
 								</div>
 								<div class="productname">${product.productName}</div>
 
-								<c:if test="${product.saleDTO.salePercent == 0}">
+								<c:if test="${product.sale.salePercent == 0}">
 									<span class="price"
 										style="font-size: 15px; color: black; text-decoration: line-through; margin-bottom: 0px; margin-top: -5px;">.</span>
 									<span class="price">$${product.price - (product.price *
-										product.saleDTO.salePercent / 100)}0</span>
+										product.sale.salePercent / 100)}0</span>
 								</c:if>
 
-								<c:if test="${product.saleDTO.salePercent != 0}">
+								<c:if test="${product.sale.salePercent != 0}">
 									<span class="price"
 										style="font-size: 15px; color: black; text-decoration: line-through; margin-bottom: 0px; margin-top: -5px;">$${product.price}0</span>
 									<span class="price">$${product.price - (product.price *
-										product.saleDTO.salePercent / 100)}0</span>
+										product.sale.salePercent / 100)}0</span>
 								</c:if>
 								<div class="button_group">
 									<a class="button add-cart" type="button"
@@ -81,7 +81,7 @@
 					<c:forEach items="${hotTwo}" var="product">
 						<div class="col-md-3 col-sm-6">
 							<div class="products">
-								<div class="offer">-${product.saleDTO.salePercent}%</div>
+								<div class="offer">-${product.sale.salePercent}%</div>
 								<div class="thumbnail">
 									<a href="product-details?productId=${product.productId}"><img
 										style="width: 90%;" src="../download?image=${product.image}"
@@ -89,18 +89,18 @@
 								</div>
 								<div class="productname">${product.productName}</div>
 
-								<c:if test="${product.saleDTO.salePercent == 0}">
+								<c:if test="${product.sale.salePercent == 0}">
 									<span class="price"
 										style="font-size: 15px; color: black; text-decoration: line-through; margin-bottom: 0px; margin-top: -5px;">.</span>
 									<span class="price">$${product.price - (product.price *
-										product.saleDTO.salePercent / 100)}0</span>
+										product.sale.salePercent / 100)}0</span>
 								</c:if>
 
-								<c:if test="${product.saleDTO.salePercent != 0}">
+								<c:if test="${product.sale.salePercent != 0}">
 									<span class="price"
 										style="font-size: 15px; color: black; text-decoration: line-through; margin-bottom: 0px; margin-top: -5px;">$${product.price}0</span>
 									<span class="price">$${product.price - (product.price *
-										product.saleDTO.salePercent / 100)}0</span>
+										product.sale.salePercent / 100)}0</span>
 								</c:if>
 
 								<div class="button_group">

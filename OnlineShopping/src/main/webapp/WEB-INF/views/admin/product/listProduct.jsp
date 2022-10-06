@@ -11,18 +11,18 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <!-- VENDOR CSS -->
 <link rel="stylesheet"
-	href="<c:url value='../resource/admin/assets/vendor/bootstrap/css/bootstrap.min.css'/>">
+	href="<c:url value='/resource/admin/assets/vendor/bootstrap/css/bootstrap.min.css'/>">
 <link rel="stylesheet"
-	href="<c:url value='../resource/admin/assets/vendor/font-awesome/css/font-awesome.min.css'/>">
+	href="<c:url value='/resource/admin/assets/vendor/font-awesome/css/font-awesome.min.css'/>">
 <link rel="stylesheet"
-	href="<c:url value='../resource/admin/assets/vendor/linearicons/style.css'/>">
+	href="<c:url value='/resource/admin/assets/vendor/linearicons/style.css'/>">
 <link rel="stylesheet"
-	href="<c:url value='../resource/admin/assets/vendor/chartist/css/chartist-custom.css'/>">
+	href="<c:url value='/resource/admin/assets/vendor/chartist/css/chartist-custom.css'/>">
 <!-- MAIN CSS -->
 <link rel="stylesheet"
-	href="<c:url value='../resource/admin/assets/css/main.css'/>">
+	href="<c:url value='/resource/admin/assets/css/main.css'/>">
 <link rel="stylesheet"
-	href="<c:url value='../resource/admin/assets/css/demo.css'/>">
+	href="<c:url value='/resource/admin/assets/css/demo.css'/>">
 <!-- GOOGLE FONTS -->
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
@@ -30,9 +30,9 @@
 
 <!-- ICONS -->
 <link rel="apple-touch-icon" sizes="76x76"
-	href="<c:url value='../resource/admin/assets/img/apple-icon.png'/>">
+	href="<c:url value='/resource/admin/assets/img/apple-icon.png'/>">
 <link rel="icon" type="image/png" sizes="96x96"
-	href="<c:url value='../resource/admin/assets/img/favicon.png'/>">
+	href="<c:url value='/resource/admin/assets/img/favicon.png'/>">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
@@ -118,14 +118,14 @@
 																	<td style="vertical-align: middle;">${product.productName}</td>
 																	<td style="vertical-align: middle;"><span
 																		style="color: #41B314; font-weight: bold;">$${product.price
-																			- (product.price * (product.saleDTO.salePercent /
+																			- (product.price * (product.sale.salePercent /
 																			100))}0</span><br /> <c:if
-																			test="${product.saleDTO.salePercent != 0}">
+																			test="${product.sale.salePercent != 0}">
 																			<span style="text-decoration: line-through;'">$${product.price}.0</span>
 																		</c:if></td>
 																	<td style="vertical-align: middle;">${product.quantity}</td>
 																	<td
-																		style="vertical-align: middle; color: #D9534F; font-weight: bold;">-${product.saleDTO.salePercent}%</td>
+																		style="vertical-align: middle; color: #D9534F; font-weight: bold;">-${product.sale.salePercent}%</td>
 																	<td style="vertical-align: middle;"><img
 																		style="width: 70%;"
 																		src="../download?image=${product.image}"></td>
@@ -144,13 +144,15 @@
 											<nav aria-label="Page navigation example"
 												style="margin-top: -30px;">
 												<ul class="pagination">
-													<c:forEach begin="0" end="${totalPage-1}" var="i">
-														<li class="page-item"><a class="page-link"
-															href="product-list?pageIndex=${i}"
-															<c:if test="${pageIndex == i}">
+													<c:if test="${totalPage}>0">
+														<c:forEach begin="0" end="${totalPage-1}" var="i">
+															<li class="page-item"><a class="page-link"
+																href="product-list?pageIndex=${i}"
+																<c:if test="${pageIndex == i}">
 														style="background-color: #F0AD4E; color: white;"
 														</c:if>>${i+1}</a></li>
-													</c:forEach>
+														</c:forEach>
+													</c:if>
 												</ul>
 											</nav>
 										</div>

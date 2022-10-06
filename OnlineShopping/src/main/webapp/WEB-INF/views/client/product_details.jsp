@@ -9,17 +9,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="../resource/client/images/favicon.png">
 <title>Welcome to FlatShop</title>
-<link href="../resource/client/css/bootstrap.css" rel="stylesheet">
+<link href="/resource/client/css/bootstrap.css" rel="stylesheet">
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,100italic,100'
 	rel='stylesheet' type='text/css'>
-<link href="../resource/client/css/font-awesome.min.css"
-	rel="stylesheet">
-<link rel="stylesheet" href="../resource/client/css/flexslider.css"
+<link href="/resource/client/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/resource/client/css/flexslider.css"
 	type="text/css" media="screen" />
-<link href="../resource/client/css/sequence-looptheme.css"
+<link href="/resource/client/css/sequence-looptheme.css"
 	rel="stylesheet" media="all" />
-<link href="../resource/client/css/style.css" rel="stylesheet">
+<link href="/resource/client/css/style.css" rel="stylesheet">
 <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script><![endif]-->
 </head>
 
@@ -37,7 +36,7 @@
 									<img src="../download?image=${product.image}" alt=""
 										style="margin-left: 35px; width: 78%; margin-top: 2px;">
 								</div>
-								<div class="offer">-${product.saleDTO.salePercent}%</div>
+								<div class="offer">-${product.sale.salePercent}%</div>
 								<div class="thum-image">
 									<ul id="gallery_01" class="prev-thum">
 										<c:forEach begin="1" end="5">
@@ -68,8 +67,8 @@
 								<hr class="border">
 								<div class="price">
 									Price : <span class="new_price"> <sup>
-											$${product.price - (product.price *
-											product.saleDTO.salePercent / 100)}0 </sup>
+											$${product.price - (product.price * product.sale.salePercent
+											/ 100)}0 </sup>
 									</span> <span class="old_price"><sup> $${product.price}0
 									</sup> </span>
 								</div>

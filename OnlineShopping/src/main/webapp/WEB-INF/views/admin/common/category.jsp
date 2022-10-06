@@ -19,9 +19,9 @@
 								<span>User</span></a></li>
 						<li><a href="product-list" class=""><i
 								class="lnr lnr-gift"></i> <span>Product</span></a></li>
-						<li><a href="" class=""><i class="lnr lnr lnr-dice"></i>
-								<span>Order</span></a></li>
-						<li><a href="" class=""><i class="lnr lnr-store"></i> <span>Go
+						<li><a href="order-list" class=""><i
+								class="lnr lnr lnr-dice"></i> <span>Order</span></a></li>
+						<li><a href="../client/home" class=""><i class="lnr lnr-store"></i> <span>Go
 									to shop</span></a></li>
 						<li><a href="" class=""><i class="lnr lnr-cog"></i> <span>Setting</span></a></li>
 					</ul>

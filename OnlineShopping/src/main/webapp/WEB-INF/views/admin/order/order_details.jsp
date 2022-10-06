@@ -13,18 +13,18 @@
 <link href="../resource/admin/assets/css/style.css" rel="stylesheet">
 
 <link rel="stylesheet"
-	href="<c:url value='../resource/admin/assets/vendor/bootstrap/css/bootstrap.min.css'/>">
+	href="<c:url value='/resource/admin/assets/vendor/bootstrap/css/bootstrap.min.css'/>">
 <link rel="stylesheet"
-	href="<c:url value='../resource/admin/assets/vendor/font-awesome/css/font-awesome.min.css'/>">
+	href="<c:url value='/resource/admin/assets/vendor/font-awesome/css/font-awesome.min.css'/>">
 <link rel="stylesheet"
-	href="<c:url value='../resource/admin/assets/vendor/linearicons/style.css'/>">
+	href="<c:url value='/resource/admin/assets/vendor/linearicons/style.css'/>">
 <link rel="stylesheet"
-	href="<c:url value='../resource/admin/assets/vendor/chartist/css/chartist-custom.css'/>">
+	href="<c:url value='/resource/admin/assets/vendor/chartist/css/chartist-custom.css'/>">
 <!-- MAIN CSS -->
 <link rel="stylesheet"
-	href="<c:url value='../resource/admin/assets/css/main.css'/>">
+	href="<c:url value='/resource/admin/assets/css/main.css'/>">
 <link rel="stylesheet"
-	href="<c:url value='../resource/admin/assets/css/demo.css'/>">
+	href="<c:url value='/resource/admin/assets/css/demo.css'/>">
 <!-- GOOGLE FONTS -->
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
@@ -32,9 +32,9 @@
 
 <!-- ICONS -->
 <link rel="apple-touch-icon" sizes="76x76"
-	href="<c:url value='../resource/admin/assets/img/apple-icon.png'/>">
+	href="<c:url value='/resource/admin/assets/img/apple-icon.png'/>">
 <link rel="icon" type="image/png" sizes="96x96"
-	href="<c:url value='../resource/admin/assets/img/favicon.png'/>">
+	href="<c:url value='/resource/admin/assets/img/favicon.png'/>">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
@@ -88,11 +88,11 @@
 									<c:forEach items="${items}" var="item">
 										<tr>
 											<td><a
-												href="product-details?productId=${item.productDTO.productId}"><img
-													src="../download?image=${item.productDTO.image}" alt=""></a></td>
+												href="product-details?productId=${item.product.productId}"><img
+													src="../download?image=${item.product.image}" alt=""></a></td>
 											<td>
 												<div class="shop-details">
-													<div class="productname">${item.productDTO.productName}</div>
+													<div class="productname">${item.product.productName}</div>
 													<p>
 														<img alt="" src="../resource/client/images/star.png">
 														<a class="review_num" href="#"> 02 Review(s) </a>
@@ -100,23 +100,23 @@
 
 													<p>${product.description}</p>
 													<p>
-														Sale : <strong class="pcode">-${item.productDTO.saleDTO.salePercent}%</strong>
+														Sale : <strong class="pcode">-${item.product.sale.salePercent}%</strong>
 													</p>
 													<p>
-														Product Code : <strong class="pcode">${item.productDTO.productId}</strong>
+														Product Code : <strong class="pcode">${item.product.productId}</strong>
 													</p>
 												</div>
 											</td>
 											<td>
 												<h5 style="color: #41B314; font-weight: bold;">$${item.unitPrice}0</h5>
-												<c:if test="${item.productDTO.saleDTO.salePercent > 0}">
+												<c:if test="${item.product.sale.salePercent > 0}">
 													<p
-														style="font-size: 16px; padding-top: 7px; text-decoration: line-through;">$${item.productDTO.price}0</p>
+														style="font-size: 16px; padding-top: 7px; text-decoration: line-through;">$${item.product.price}0</p>
 												</c:if>
 											</td>
 											<td><select name="quantity" style="color: red;">
 													<option value="${item.quantity}">${item.quantity}</option>
-													<input type="hidden" value="${item.productDTO.productId}"
+													<input type="hidden" value="${item.product.productId}"
 													name="prsoductId" />
 											</select></td>
 											<td>
@@ -151,8 +151,8 @@
 													style="margin-top: -35px; color: #00ACC1; margin-right: 1px;">&#xe0c8;</i>
 												<i class="title"
 													style="font-size: 17px; color: #00ACC1; font-weight: bold; margin-top: -30px;">
-													${order.userDTO.fullname} * ${order.userDTO.address} *
-													${order.userDTO.phone}</i><br />
+													${order.user.fullname} * ${order.user.address} *
+													${order.user.phone}</i><br />
 											</p></td>
 									</tr>
 								</tfoot>

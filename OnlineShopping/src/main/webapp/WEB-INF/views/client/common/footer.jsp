@@ -28,7 +28,7 @@
 				<div class="row">
 					<div class="col-md-3">
 						<div class="footer-logo">
-							<a href="#"><img src="../resource/client/images/logo.png"
+							<a href="#"><img src="/resource/client/images/logo.png"
 								alt=""></a>
 						</div>
 					</div>
@@ -36,9 +36,9 @@
 						<h4 class="title">
 							Contact <strong>Info</strong>
 						</h4>
-						<p>No. 08, Nguyen Trai, Hanoi , Vietnam</p>
-						<p>Call Us : (084) 1900 1008</p>
-						<p>Email : michael@leebros.us</p>
+						<p>HoChiMinh City, Vietnam</p>
+						<p>Call Us : (084) 0987654321</p>
+						<p>Email : onlineshopping@gmail.com</p>
 					</div>
 					<div class="col-md-3 col-sm-6">
 						<h4 class="title">
@@ -69,8 +69,8 @@
 				<div class="row">
 					<div class="col-md-6">
 						<p>
-							Copyright © 2012. Designed by <a href="#">Michael Lee</a>. All
-							rights reseved
+							Copyright © 2022. Designed by <a href="#">Team 1</a>. All rights
+							reseved
 						</p>
 					</div>
 					<div class="col-md-6">
