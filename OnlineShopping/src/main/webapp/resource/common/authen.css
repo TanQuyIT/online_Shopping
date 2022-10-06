@@ -4,12 +4,15 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 .auth-form {
-	margin: auto;
-	margin-top: 60px;
 	width: 400px;
 	height: auto;
 	box-shadow: 0 0 10px;
 	border-radius: 10px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 }
 
 .auth-form-container {

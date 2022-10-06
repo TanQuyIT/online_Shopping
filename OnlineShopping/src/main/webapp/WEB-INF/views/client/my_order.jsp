@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="../resource/client/images/favicon.png">
-<title>Welcome to FlatShop</title>
+<title>My Order</title>
 <link href="/resource/client/css/bootstrap.css" rel="stylesheet">
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,100italic,100'
@@ -38,15 +38,11 @@
 								<h3 class="title">
 									Get <strong> newsletter </strong>
 								</h3>
-								<p>Casio G Shock Digital Dial Black.</p>
 								<form>
 									<input class="email" type="text" name=""
 										placeholder="Your Email..."> <input class="submit"
 										type="submit" value="Submit">
 								</form>
-							</div>
-							<div class="leftbanner">
-								<img src="../resource/client/images/vans.jpg" alt="">
 							</div>
 						</div>
 						<div class="col-md-9">

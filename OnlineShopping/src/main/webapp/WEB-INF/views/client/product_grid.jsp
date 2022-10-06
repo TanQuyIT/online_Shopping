@@ -8,7 +8,7 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="../resource/client/images/favicon.png">
-<title>Welcome to FlatShop</title>
+<title>List products by category</title>
 <link href="/resource/client/css/bootstrap.css" rel="stylesheet">
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,100italic,100'
@@ -19,7 +19,6 @@
 <link href="/resource/client/css/sequence-looptheme.css"
 	rel="stylesheet" media="all" />
 <link href="/resource/client/css/style.css" rel="stylesheet">
-<!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script><![endif]-->
 </head>
 <body id="home">
 	<div class="wrapper">
@@ -74,34 +73,8 @@
 							<h3 class="title">Others</h3>
 						</div>
 						<div class="clearfix"></div>
-						<div class="fbl-box leftbar">
-							<h3 class="title">Facebook</h3>
-							<span class="likebutton"> <a href="#"> <img
-									src="/resource/client/images/fblike.png" alt="">
-							</a>
-							</span>
-							<p>12k people like Flat Shop.</p>
-							<ul>
-								<li><a href="#"> </a></li>
-								<li><a href="#"> </a></li>
-								<li><a href="#"> </a></li>
-								<li><a href="#"> </a></li>
-								<li><a href="#"> </a></li>
-								<li><a href="#"> </a></li>
-								<li><a href="#"> </a></li>
-								<li><a href="#"> </a></li>
-							</ul>
-							<div class="fbplug">
-								<a href="#"> <span> <img
-										src="/resource/client/images/fbicon.png" alt="">
-								</span> Facebook social plugin
-								</a>
-							</div>
-						</div>
 						<div class="clearfix"></div>
-						<div class="leftbanner">
-							<img src="/resource/client/images/vans.jpg" alt="">
-						</div>
+						<div class="leftbanner"></div>
 					</div>
 					<div class="col-md-9">
 						<div class="clearfix"></div>
@@ -161,8 +134,6 @@
 							</div>
 						</div>
 					</div>
-
-					<!-- 			<div th:replace="client/common/ourbands :: ourbands"></div> -->
 
 				</div>
 			</div>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard | Klorofil - Free Bootstrap Dashboard Template</title>
+<title>Dashboard</title>
 <meta charset="utf-8">
 </head>
 
@@ -13,26 +13,20 @@
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<img src="../resource/admin/assets/img/logo-dark.png"
+				<a href="home"> <img
+					src="../resource/admin/assets/img/logo-dark.png"
 					alt="Klorofil Logo" class="img-responsive logo">
+				</a>
 			</div>
 			<div class="container-fluid">
 				<div id="navbar-menu">
-					<form class="navbar-form navbar-left">
-						<div class="input-group">
-							<input type="text" value="" class="form-control"
-								placeholder="Search dashboard..."> <span
-								class="input-group-btn"><button type="button"
-									class="btn btn-primary">Go</button></span>
-						</div>
-					</form>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="home"> <i class="fa fa-home"
 								style="font-size: 18px;"></i><span> Home</span>
 						</a></li>
 						<li><a href="#"> <img
 								src="../download?image=${sessionScope.user.avatar}"
-								class="img-circle" alt="Avatar"> <span>${sessionScope.username}</span>
+								class="img-circle" alt="Avatar"> <span>${sessionScope.user.fullname}</span>
 						</a></li>
 						<li><a href="../logout"> <i class="material-icons"
 								style="color: red;">&#xe8ac;</i><span>Logout</span>

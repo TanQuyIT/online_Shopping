@@ -1,227 +1,470 @@
-DROP TABLE IF EXISTS category
+--------------------------------------------------------
+--  File created - Friday-October-07-2022   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table BILL
+--------------------------------------------------------
 
-CREATE TABLE category(
-    category_id number(19) NOT NULL primary key,
-    category_name varchar(255) NOT NULL
-)
+  CREATE TABLE "VN_JAVA2"."BILL" 
+   (	"BILL_ID" NUMBER(10,0), 
+	"BUY_DATE" DATE, 
+	"PRICE_TOTAL" NUMBER(19,0), 
+	"STATUS" VARCHAR2(255 CHAR), 
+	"USER_ID" NUMBER(19,0)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Table BILLPRODUCT
+--------------------------------------------------------
 
-INSERT INTO category VALUES (1,'Vans authentic'),
-                            (2,'Vans classic'),
-                            (3,'Vans ERA'),
-                            (4,'Vans old skool'),
-                            (5,'Vans SK8'),
-                            (6,'Vans slip-on')
+  CREATE TABLE "VN_JAVA2"."BILLPRODUCT" 
+   (	"BILLPRODUCT_ID" NUMBER(19,0), 
+	"QUANTITY" NUMBER(10,0), 
+	"UNIT_PRICE" FLOAT(126), 
+	"BILL_ID" NUMBER(10,0), 
+	"PRODUCT_ID" NUMBER(19,0)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Table CART
+--------------------------------------------------------
 
-DROP TABLE IF EXISTS item
+  CREATE TABLE "VN_JAVA2"."CART" 
+   (	"CART_ID" NUMBER(19,0), 
+	"QUANTITY" NUMBER(10,0), 
+	"PRODUCT_ID" NUMBER(19,0), 
+	"USER_ID" NUMBER(19,0)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Table CATEGORY
+--------------------------------------------------------
 
-CREATE TABLE item(
-    item_id number(50) NOT NULL AUTO_INCREMENT,
-    product_id number(50) NOT NULL,
-    unit_price binary_double(20) NOT NULL,
-    quantity number(20) NOT NULL,
-    order_id number(50) NOT NULL,
-    primary key (item_id), 
-    foreign key product_id references product (product_id)
-)
+  CREATE TABLE "VN_JAVA2"."CATEGORY" 
+   (	"CATEGORY_ID" NUMBER(19,0), 
+	"CATEGORY_NAME" VARCHAR2(255 CHAR)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Table ITEM
+--------------------------------------------------------
 
-INSERT INTO item VALUES (9,51,77,1,14),
-                        (10,88,50,1,14),
-                        (11,49,52,2,15),
-                        (12,50,54,1,15),
-                        (13,88,50,3,15),
-                        (14,89,48,1,15),
-                        (15,51,77,3,16),
-                        (16,47,60,1,16),
-                        (17,49,52,2,17),
-                        (18,58,59,1,17),
-                        (19,49,52,2,21),
-                        (20,60,68,1,22),
-                        (21,50,54,1,23),
-                        (22,88,49,3,23),
-                        (23,89,48,2,23),
-                        (24,51,76,2,24),
-                        (25,52,64,1,24),
-                        (26,58,59,5,25),
-                        (27,47,60,3,25),
-                        (28,50,54,1,26),
-                        (29,89,48,2,26),
-                        (30,64,71,1,27),
-                        (31,51,76,4,27),
-                        (32,77,53,1,27),
-                        (33,51,76,1,28),
-                        (34,47,60,3,28),
-                        (35,52,64,1,29),
-                        (36,47,60,1,30),
-                        (37,81,42,2,31),
-                        (38,60,68,1,31),
-                        (39,81,42,3,32),
-                        (40,98,42,1,33),
-                        (41,77,53,1,33),
-                        (42,49,52,3,34),
-                        (43,95,44,2,34),
-                        (44,98,70,5,35),
-                        (45,55,67,2,35),
-                        (46,72,70,3,35),
-                        (47,47,60,2,36),
-                        (48,51,76,1,37),
-                        (49,51,76,1,38),
-                        (50,60,68,1,39)
+  CREATE TABLE "VN_JAVA2"."ITEM" 
+   (	"ITEM_ID" NUMBER(19,0), 
+	"QUANTITY" NUMBER(10,0), 
+	"UNIT_PRICE" FLOAT(126), 
+	"ORDER_ID" NUMBER(19,0), 
+	"PRODUCT_ID" NUMBER(19,0)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Table ORDER_USER
+--------------------------------------------------------
 
+  CREATE TABLE "VN_JAVA2"."ORDER_USER" 
+   (	"ORDER_ID" NUMBER(19,0), 
+	"BUY_DATE" DATE, 
+	"PRICE_TOTAL" FLOAT(126), 
+	"STATUS" VARCHAR2(255 CHAR), 
+	"USER_ID" NUMBER(19,0)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Table PRODUCT
+--------------------------------------------------------
 
-DROP TABLE IF EXISTS order_user
+  CREATE TABLE "VN_JAVA2"."PRODUCT" 
+   (	"PRODUCT_ID" NUMBER(19,0), 
+	"DESCRIPTION" VARCHAR2(255 CHAR), 
+	"IMAGE" VARCHAR2(255 CHAR), 
+	"PRICE" FLOAT(126), 
+	"PRODUCT_NAME" VARCHAR2(255 CHAR), 
+	"QUANTITY" NUMBER(10,0), 
+	"CATEGORY_ID" NUMBER(19,0), 
+	"SALE_ID" VARCHAR2(255 CHAR)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Table ROLE_TABLE
+--------------------------------------------------------
 
-CREATE TABLE order_user(
-    order_id number(50) NOT NULL AUTO_INCREMENT,
-    buy_date datetime NOT NULL,
-    status varchar(100) NOT NULL,
-    price_total binary_double NOT NULL,
-    user_id number(50) NOT NULL,
-    primary key (order_id, user_id),
-    foreign key user_id references user (user_id)
-)
+  CREATE TABLE "VN_JAVA2"."ROLE_TABLE" 
+   (	"ROLE_ID" NUMBER(19,0), 
+	"ROLE_NAME" VARCHAR2(255 CHAR)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Table SALE
+--------------------------------------------------------
 
-INSERT INTO TABLE order_user VALUES (14,'2022-09-27 00:00:00','SUCCESS',132,40),
-                                    (15,'2022-09-27 00:00:00','SUCCESS',361,70),
-                                    (16,'2022-09-29 00:00:00','SUCCESS',296,40),
-                                    (17,'2022-09-30 00:00:00','SUCCESS',168,40),
-                                    (21,'2022-09-30 00:00:00','SUCCESS',109,40),
-                                    (22,'2022-09-30 00:00:00','SUCCESS',73,70),
-                                    (23,'2022-10-02 00:00:00','SUCCESS',302,40),
-                                    (24,'2022-10-02 00:00:00','SUCCESS',221,76),
-                                    (25,'2022-10-02 00:00:00','SUCCESS',480,76),
-                                    (26,'2022-10-02 00:00:00','SUCCESS',155,78),
-                                    (27,'2022-10-02 00:00:00','SUCCESS',433,78),
-                                    (28,'2022-10-02 00:00:00','SUCCESS',261,78),
-                                    (29,'2022-10-02 00:00:00','SUCCESS',69,78),
-                                    (30,'2022-10-02 00:00:00','SUCCESS',65,78),
-                                    (31,'2022-10-02 00:00:00','SUCCESS',157,79),
-                                    (32,'2022-10-02 00:00:00','SUCCESS',131,81),
-                                    (33,'2022-10-02 00:00:00','SUCCESS',100,81),
-                                    (34,'2022-10-03 00:00:00','SUCCESS',249,40),
-                                    (35,'2022-10-03 00:00:00','SUCCESS',699,95),
-                                    (36,'2022-10-03 00:00:00','SUCCESS',125,95),
-                                    (37,'2022-10-03 00:00:00','PENDING',81,76),
-                                    (38,'2022-10-03 00:00:00','PENDING',81,70),
-                                    (39,'2022-10-03 00:00:00','PENDING',73,40)
+  CREATE TABLE "VN_JAVA2"."SALE" 
+   (	"SALE_ID" VARCHAR2(255 CHAR), 
+	"SALE_PERCENT" NUMBER(10,0)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Table USER_TABLE
+--------------------------------------------------------
 
+  CREATE TABLE "VN_JAVA2"."USER_TABLE" 
+   (	"USER_ID" NUMBER(19,0), 
+	"ADDRESS" VARCHAR2(255 CHAR), 
+	"AVATAR" VARCHAR2(255 CHAR), 
+	"EMAIL" VARCHAR2(255 CHAR), 
+	"FULL_NAME" VARCHAR2(255 CHAR), 
+	"GENDER" NUMBER(1,0), 
+	"PASSWORD" VARCHAR2(255 CHAR), 
+	"PHONE" VARCHAR2(255 CHAR), 
+	"VERIFY" NUMBER(1,0), 
+	"ROLE_ID" NUMBER(19,0)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+REM INSERTING into VN_JAVA2.BILL
+SET DEFINE OFF;
+REM INSERTING into VN_JAVA2.BILLPRODUCT
+SET DEFINE OFF;
+REM INSERTING into VN_JAVA2.CART
+SET DEFINE OFF;
+REM INSERTING into VN_JAVA2.CATEGORY
+SET DEFINE OFF;
+Insert into VN_JAVA2.CATEGORY (CATEGORY_ID,CATEGORY_NAME) values (2,'Hoodie');
+Insert into VN_JAVA2.CATEGORY (CATEGORY_ID,CATEGORY_NAME) values (3,'T-Shirt');
+Insert into VN_JAVA2.CATEGORY (CATEGORY_ID,CATEGORY_NAME) values (4,'Polo');
+Insert into VN_JAVA2.CATEGORY (CATEGORY_ID,CATEGORY_NAME) values (5,'Shoes');
+Insert into VN_JAVA2.CATEGORY (CATEGORY_ID,CATEGORY_NAME) values (6,'Pants');
+Insert into VN_JAVA2.CATEGORY (CATEGORY_ID,CATEGORY_NAME) values (7,'Skirt');
+Insert into VN_JAVA2.CATEGORY (CATEGORY_ID,CATEGORY_NAME) values (1,'Shirt');
+Insert into VN_JAVA2.CATEGORY (CATEGORY_ID,CATEGORY_NAME) values (8,'Jacket');
+Insert into VN_JAVA2.CATEGORY (CATEGORY_ID,CATEGORY_NAME) values (9,'Suit');
+REM INSERTING into VN_JAVA2.ITEM
+SET DEFINE OFF;
+Insert into VN_JAVA2.ITEM (ITEM_ID,QUANTITY,UNIT_PRICE,ORDER_ID,PRODUCT_ID) values (1704,1,100,1653,27);
+Insert into VN_JAVA2.ITEM (ITEM_ID,QUANTITY,UNIT_PRICE,ORDER_ID,PRODUCT_ID) values (1702,1,400,1652,4);
+Insert into VN_JAVA2.ITEM (ITEM_ID,QUANTITY,UNIT_PRICE,ORDER_ID,PRODUCT_ID) values (1703,2,250,1652,29);
+Insert into VN_JAVA2.ITEM (ITEM_ID,QUANTITY,UNIT_PRICE,ORDER_ID,PRODUCT_ID) values (1705,1,135,1653,15);
+Insert into VN_JAVA2.ITEM (ITEM_ID,QUANTITY,UNIT_PRICE,ORDER_ID,PRODUCT_ID) values (1852,1,32,1802,1);
+REM INSERTING into VN_JAVA2.ORDER_USER
+SET DEFINE OFF;
+Insert into VN_JAVA2.ORDER_USER (ORDER_ID,BUY_DATE,PRICE_TOTAL,STATUS,USER_ID) values (1802,to_date('07-OCT-22','DD-MON-RR'),37,'PENDING',1353);
+Insert into VN_JAVA2.ORDER_USER (ORDER_ID,BUY_DATE,PRICE_TOTAL,STATUS,USER_ID) values (1652,to_date('06-OCT-22','DD-MON-RR'),905,'PENDING',1353);
+Insert into VN_JAVA2.ORDER_USER (ORDER_ID,BUY_DATE,PRICE_TOTAL,STATUS,USER_ID) values (1653,to_date('06-OCT-22','DD-MON-RR'),240,'SUCCESS',1603);
+REM INSERTING into VN_JAVA2.PRODUCT
+SET DEFINE OFF;
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (1,'Unisex T-shirt','ulzzang.jfif',40,'Ulzzang',10,3,'s20pc');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (2,'Unisex T-shirt','adlv.jfif',50,'ADLV',10,3,'s10pc');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (3,'Polo Shirt','degrey.webp',15,'Degrey',10,4,'default');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (4,'T-Shirt','gucci.jfif',500,'Gucci',10,3,'s20pc');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (5,'Unisex T-shirt','1969unisex.jfif',35,'1969',20,3,'default');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (6,'Hoodie shirt','mape.jfif',100,'Mape',50,2,'s10pc');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (7,'Hoodie shirt','staytuned.jfif',75,'Staytuned',30,2,'s30pc');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (8,'Hoodie shirt','visavet.jfif',85,'Visa Vet',45,2,'default');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (9,'Shirt','menswear.jfif',90,'Menswear',15,1,'s10pc');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (10,'Jacket','mlb.jfif',50,'MLB',5,8,'s40pc');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (12,'Shirt','menswear2.jfif',90,'Menswear2',30,1,'default');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (13,'Boots','chelsea.jfif',50,'Chelsea',50,5,'default');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (14,'Pants','baggy.jfif',100,'Baggy',25,6,'s30pc');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (15,'Pants','jean.jfif',150,'Jean',50,6,'s10pc');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (16,'Pants','jean2.jfif',120,'Jean2',45,6,'s20pc');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (17,'Sneaker ','guccc.jfif',50,'Guccc',20,5,'default');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (18,'Boots','martin.jfif',65,'Martin',30,5,'s10pc');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (20,'Jacket','ultralight3d.webp',100,'Ultra Light 3D',20,8,'s20pc');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (22,'T-Shirt','miextrafine.webp',50,'Mi Extra Fine',10,3,'default');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (24,'Skirt','kbskirt.jfif',150,'K.B Skirt',15,7,'default');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (25,'Pants','needofwisdom.jfif',100,'Need of WisDom',40,6,'s30pc');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (26,'Pants','peepants.jfif',75,'Pee Pants',25,6,'s10pc');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (27,'Shirt','dreanshirt.png',100,'Drean Shirt',30,1,'default');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (28,'Shirt','f-shirt.webp',300,'F - Shirt',50,1,'default');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (29,'Shirt','blackadult.jpg',250,'Black Adult',55,1,'default');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (31,'Suit','matcher.jfif',40,'Matcher',60,9,'s10pc');
+Insert into VN_JAVA2.PRODUCT (PRODUCT_ID,DESCRIPTION,IMAGE,PRICE,PRODUCT_NAME,QUANTITY,CATEGORY_ID,SALE_ID) values (32,'Suit','mish.jfif',60,'Mish',100,9,'s10pc');
+REM INSERTING into VN_JAVA2.ROLE_TABLE
+SET DEFINE OFF;
+Insert into VN_JAVA2.ROLE_TABLE (ROLE_ID,ROLE_NAME) values (1,'ROLE_ADMIN');
+Insert into VN_JAVA2.ROLE_TABLE (ROLE_ID,ROLE_NAME) values (2,'ROLE_MEMBER');
+Insert into VN_JAVA2.ROLE_TABLE (ROLE_ID,ROLE_NAME) values (3,'ROLE_USER');
+REM INSERTING into VN_JAVA2.SALE
+SET DEFINE OFF;
+Insert into VN_JAVA2.SALE (SALE_ID,SALE_PERCENT) values ('default',0);
+Insert into VN_JAVA2.SALE (SALE_ID,SALE_PERCENT) values ('s10pc',10);
+Insert into VN_JAVA2.SALE (SALE_ID,SALE_PERCENT) values ('s20pc',20);
+Insert into VN_JAVA2.SALE (SALE_ID,SALE_PERCENT) values ('s30pc',30);
+Insert into VN_JAVA2.SALE (SALE_ID,SALE_PERCENT) values ('s40pc',40);
+Insert into VN_JAVA2.SALE (SALE_ID,SALE_PERCENT) values ('s50',50);
+REM INSERTING into VN_JAVA2.USER_TABLE
+SET DEFINE OFF;
+Insert into VN_JAVA2.USER_TABLE (USER_ID,ADDRESS,AVATAR,EMAIL,FULL_NAME,GENDER,PASSWORD,PHONE,VERIFY,ROLE_ID) values (1353,'Ho Chi Minh City','user_avatar.png','nguyen@gmail.com','Mai Huynh Trung Nguyen',1,'$2a$10$R/0AwP4GbpAWavXKHDS9L.2mjrq5kWeWMbmT8LF5.KmBh79wPNE8q','0963730907',1,3);
+Insert into VN_JAVA2.USER_TABLE (USER_ID,ADDRESS,AVATAR,EMAIL,FULL_NAME,GENDER,PASSWORD,PHONE,VERIFY,ROLE_ID) values (1602,'Viet Nam','user_avatar.png','thanh@gmail.com','Nguyen Minh Thanh',1,'$2a$10$tyxR9hhjYdU18SKhtZ61MuZOOhUt5RbfAwsAe9bdacPy5wlvoqCty','0123456789',1,2);
+Insert into VN_JAVA2.USER_TABLE (USER_ID,ADDRESS,AVATAR,EMAIL,FULL_NAME,GENDER,PASSWORD,PHONE,VERIFY,ROLE_ID) values (1603,'Viet Nam','user_avatar.png','huy@gmail.com','Nguyen Trong Huy',1,'$2a$10$.YyZzO4PMNfWW/x4X/cdS.jDpuVF6JQ7bF9xdfxJqHLJTatL1jAEG','012345678',1,3);
+Insert into VN_JAVA2.USER_TABLE (USER_ID,ADDRESS,AVATAR,EMAIL,FULL_NAME,GENDER,PASSWORD,PHONE,VERIFY,ROLE_ID) values (1,'VN','1665045944459.png','admin@gmail.com','Mr Admin',1,'$2a$10$CLsuKq.6olFyVcBwRgcX8uGEY8ENpNI7dBucY8J190q7I1GUGuG7C','0987654321',1,1);
+Insert into VN_JAVA2.USER_TABLE (USER_ID,ADDRESS,AVATAR,EMAIL,FULL_NAME,GENDER,PASSWORD,PHONE,VERIFY,ROLE_ID) values (1604,'Ho Chi Minh, Viet nam','1665083021925.png','quy@gmail.com','Le Tan Quy',1,'$2a$10$Nvh6c/Y3DSg2Io92/xsjHOBeBRlL3/v1FMw6Pe22Y3zvufd6jXBC.','0912345678',1,1);
+Insert into VN_JAVA2.USER_TABLE (USER_ID,ADDRESS,AVATAR,EMAIL,FULL_NAME,GENDER,PASSWORD,PHONE,VERIFY,ROLE_ID) values (1355,'India','user_avatar.png','client@gmail.com','Mr Client',1,'$2a$10$ZMFar.PlNQusUjXxwKZlc.vUBLHnl4oG4MQD3FyNnLMRmmtUi6V8W','0963730907',1,3);
+--------------------------------------------------------
+--  DDL for Index SYS_C007407
+--------------------------------------------------------
 
-DROP TABLE if EXISTS product
+  CREATE UNIQUE INDEX "VN_JAVA2"."SYS_C007407" ON "VN_JAVA2"."BILL" ("BILL_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007409
+--------------------------------------------------------
 
-CREATE TABLE product(
-    product_id number(50) NOT NULL AUTO_INCREMENT,
-    description varchar(255),
-    image varchar(255),
-    price binary_double NOT NULL,
-    product_name varchar(255),
-    quantity number(50) NOT NULL,
-    category_id number(50) NOT NULL,
-    sale_id number(50) NOT NULL,
-    primary key (product_id),
-    foreign key (category_id) references category (category_id),
-    foreign key (sale_id)) references sale (sale_id),
-)
+  CREATE UNIQUE INDEX "VN_JAVA2"."SYS_C007409" ON "VN_JAVA2"."BILLPRODUCT" ("BILLPRODUCT_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007411
+--------------------------------------------------------
 
-INSERT INTO product VALUES (44,'Vans Authentic 44 Dx Classic White - Anaheim Factory','1611853378099.jpg',65,'Vans authentic',150,1,'s20pc'),
-                           (47,'Vans Dallas Clayton Authentic Rainbow True -  White','1608622024114.jpg',67,'Vans authentic',55,1,'s10pc'),
-                           (48,'Vans Sk8 - Hi Label Mix','1608622139500.jpg',60,'Vans old skool',152,4,'default'),
-                           (49,'Sneakers Vans Authentic Black White','1609034076692.jpg',65,'Vans old skool',150,4,'s20pc'),
-                           (50,'Vans old skool classic black/white','1608622277960.jpg',60,'Vans old skool',199,4,'s10pc'),
-                           (51,'Vans Sk8-Hi Deck Club','1608622647893.jpg',85,'Vans SK8',120,5,'s10pc'),
-                           (52,'Vans Sk8 Hi Black White','1608622710798.png',80,'Vans SK8',345,5,'s20pc'),
-                           (53,'Vans Sk8 Hi Navy White\r\n','1608622786673.jpg',78,'Vans SK8',167,5,'default'),
-                           (54,'Vans Sk8 Hi Navy White\r\n','1608622841439.png',89,'Vans SK8',313,5,'s30pc'),
-                           (55,'Vans Old Skool Flash Skulls','1608622964916.jpg',67,'Vans old skool',467,4,'default'),
-                           (56,'Vans Style 36 Crew Checkerboard','1608623182252.jpg',78,'Vans old skool',276,4,'s10pc'),
-                           (57,'Vans Old Skool 36 DX Anaheim Factory','1612540190989.jpg',65,'Vans old skool',198,4,'s20pc'),
-                           (58,'Vans Authentic Red White\r\n','1608623362414.png',59,'Vans authentic',435,1,'default'),
-                           (59,'Vans Sk8-Hi Flame Reissue','1608623531124.jpg',70,'Vans SK8',365,5,'s30pc'),
-                           (60,' Vans Sk8-Hi DIY Tapered White','1608623614207.png',85,'Vans SK8',423,5,'s20pc'),
-                           (61,'Vans Sk8-Hi DIY Tapered Black','1608623670293.jpg',59,'Vans old skool',531,4,'s10pc'),
-                           (62,'Vans Sk8-Hi Flame Reissue','1608623745484.jpg',79,'Vans SK8',484,5,'default'),
-                           (63,'\r\nGiày Vans SK8-Hi Alien Ghosts','1608623803283.png',79,'Vans SK8',567,5,'s30pc'),
-                           (64,'\r\nGiày Vans SK8 - Hi 38 DX Anaheim Factory','1608623863531.jpg',89,'Vans SK8',462,5,'s20pc'),
-                           (65,'Vans SK8 - Hi 38 DX Anaheim Factory','1608624027198.jpg',69,'Vans SK8',352,5,'s10pc'),
-                           (66,'Vans Sk8-Hi DIY Tapered White','1612268137270.jpg',69,'Vans old skool',535,4,'s40pc'),
-                           (67,'Vans Old Skool Off The Wall Sidewall True Navy','1608624884611.png',59,'Vans old skool',215,4,'s30pc'),
-                           (68,'Vans Authentic Black White','1608624944384.jpg',65,'Vans old skool',453,4,'s20pc'),
-                           (69,'Vans Authentic 44 Dx Checkerbroad','1608625004288.jpg',69,'Vans old skool',379,4,'s40pc'),
-                           (70,'Vans Old Skool 36 DX Anaheim Factory','1608625060270.jpg',60,'Vans old skool',265,4,'s30pc'),
-                           (71,'\r\nVans Vault Authentic Chili Pepper - Ship US','1608774008706.jpg',65,'Vans authentic',343,1,'s20pc'),
-                           (72,'Vans Era Patchwork Multi Color','1608774152453.jpg',78,'Vans authentic',547,1,'s10pc'),
-                           (73,'Vans Authentic Caro Black White','1608774264295.jpg',60,'Vans authentic',743,1,'s20pc'),
-                           (74,'Vans Vault OG Authentic LX Black White - Ship US','1608774321256.jpg',65,'Vans authentic',296,1,'default'),
-                           (75,'Vans Vault Authentic Chili Pepper - Ship US','1608774363405.jpg',60,'Vans authentic',343,1,'s10pc'),
-                           (77,'Vans Moma Classic Slip On','1609034545320.png',59,'Vans slip-on',834,6,'s10pc'),
-                           (78,'Vans Slip-On Custom Culture Along with the Gods','1609034608943.png',56,'Vans slip-on',783,6,'s20pc'),
-                           (79,'Vans Slip-On Alien Ghosts','1609034653526.png',45,'Vans slip-on',673,6,'default'),
-                           (80,'Vans Slip-On Anaheim Factory Checkerboard','1609034696789.jpg',49,'Vans slip-on',348,6,'s20pc'),
-                           (81,'Vans Slip-On Mix Checker Chili Pepper','1609034733814.jpg',78,'Vans slip-on',934,6,'s10pc'),
-                           (82,'Vans Slip-On Stickers Mash Up','1609034816715.jpg',50,'Vans slip-on',582,6,'s10pc'),
-                           (83,'Vans Slip-On Anaheim Factory Checkerboard','1609034871405.jpg',50,'Vans slip-on',563,6,'s20pc'),
-                           (84,'Vans Slip-On Label Mix','1609034923703.jpg',55,'Vans slip-on',328,6,'s30pc'),
-                           (85,'Vans Slip-On Mix Checker Chili Pepper','1609034970946.jpg',49,'Vans slip-on',921,6,'s10pc'),
-                           (86,'Vans Slip-on Black Red F196 Checkerboard','1609035021120.jpg',59,'Vans slip-on',445,6,'s20pc'),
-                           (87,'Vans Slip-On Mismatch','1609035081382.jpg',60,'Vans slip-on',562,6,'s20pc'),
-                           (88,'Vans Era Forgotten Bones','1609035204723.jpg',78,'Vans ERA',765,3,'s10pc'),
-                           (89,'Vans Era Lady Vans','1609035242491.jpg',60,'Vans ERA',452,3,'s20pc'),
-                           (90,'Vans Era \"Get The Real\" Racing Red','1609035287852.jpg',45,'Vans ERA',293,3,'s20pc'),
-                           (91,'Vans Era Deboss Checkerboard','1609035321871.jpg',50,'Vans ERA',546,3,'s30pc'),
-                           (92,'Vans Era Comfycush Black','1609035380193.jpg',50,'Vans ERA',834,3,'s10pc'),
-                           (93,'Vans Era Checkerboard Marshmallow','1609035436770.jpg',59,'Vans ERA',453,3,'s20pc'),
-                           (94,'Checkerboard Classic Better Seller','1609036735269.png',60,'Vans classic',456,2,'s10pc'),
-                           (95,'Checkerboard Classic Better Seller','1609036754525.png',55,'Vans classic',738,2,'s20pc'),
-                           (96,'Checkerboard Classic Better Seller','1609036772150.png',49,'Vans classic',982,2,'s10pc'),
-                           (97,'Checkerboard Classic Better Seller','1609036791385.png',59,'Vans classic',213,2,'s30pc'),
-                           (98,'Checkerboard Classic Better Seller','1609036821201.png',78,'Vans classic',573,2,'s10pc'),
-                           (99,'Checkerboard Classic Better Seller','1609036841790.jpg',59,'Vans classic',837,2,'s30pc'),
-                           (100,'Checkerboard Classic Better Seller','1609036892365.jpg',60,'Vans classic',458,2,'s30pc'),
-                           (101,'Checkerboard Classic Better Seller','1609036918234.png',49,'Vans classic',635,2,'s10pc'),
-                           (107,'Checkerboard Classic Better Seller','1612540248195.jpg',64,'Vans classic',120,2,'s30pc')
+  CREATE UNIQUE INDEX "VN_JAVA2"."SYS_C007411" ON "VN_JAVA2"."CART" ("CART_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007413
+--------------------------------------------------------
 
-DROP TABLE IF EXISTS role
+  CREATE UNIQUE INDEX "VN_JAVA2"."SYS_C007413" ON "VN_JAVA2"."CATEGORY" ("CATEGORY_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007415
+--------------------------------------------------------
 
-CREATE TABLE role(
-    role_id number(50) NOT NULL AUTO_INCREMENT,
-    role_name varchar(255) NOT NULL,
-    primary key(role_id)
-)
+  CREATE UNIQUE INDEX "VN_JAVA2"."SYS_C007415" ON "VN_JAVA2"."ITEM" ("ITEM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007417
+--------------------------------------------------------
 
-INSERT INTO role VALUES (1,'ROLE_ADMIN'),
-                        (2,'ROLE_MEMBER'),
-                        (3,'ROLE_USER')
+  CREATE UNIQUE INDEX "VN_JAVA2"."SYS_C007417" ON "VN_JAVA2"."ORDER_USER" ("ORDER_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007419
+--------------------------------------------------------
 
-DROP TABLE IF EXISTS sale
+  CREATE UNIQUE INDEX "VN_JAVA2"."SYS_C007419" ON "VN_JAVA2"."PRODUCT" ("PRODUCT_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007421
+--------------------------------------------------------
 
-CREATE TABLE sale(
-    sale_id varchar(255) NOT NULL,
-    sale_percent number(100) NOT NULL,
-    primary key(sale_id)
-)
+  CREATE UNIQUE INDEX "VN_JAVA2"."SYS_C007421" ON "VN_JAVA2"."ROLE_TABLE" ("ROLE_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007423
+--------------------------------------------------------
 
-INSERT INTO sale VALUES ('default',0),
-                        ('s10pc',10),
-                        ('s20pc',20),
-                        ('s30pc',30),
-                        ('s40pc',40),
-                        ('s50',50)
+  CREATE UNIQUE INDEX "VN_JAVA2"."SYS_C007423" ON "VN_JAVA2"."SALE" ("SALE_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007425
+--------------------------------------------------------
 
-DROP TABLE IF EXISTS user_table
+  CREATE UNIQUE INDEX "VN_JAVA2"."SYS_C007425" ON "VN_JAVA2"."USER_TABLE" ("USER_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  Constraints for Table BILL
+--------------------------------------------------------
 
-CREATE TABLE user_table(
-    user_id number(50) NOT NULL AUTO_INCREMENT,
-    address varchar(255),
-    full_name varchar(255),
-    gemder binary,
-    image varchar(255),
-    password varchar(255),
-    phone varchar(255),
-    role_id number(50),
-    avatar varchar(255),
-    email varchar(200),
-    verify binary,
-    primary key (user_id),
-    foreign key role_id references role(role_id)
-)
+  ALTER TABLE "VN_JAVA2"."BILL" ADD PRIMARY KEY ("BILL_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+  ALTER TABLE "VN_JAVA2"."BILL" MODIFY ("BILL_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table BILLPRODUCT
+--------------------------------------------------------
 
+  ALTER TABLE "VN_JAVA2"."BILLPRODUCT" ADD PRIMARY KEY ("BILLPRODUCT_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+  ALTER TABLE "VN_JAVA2"."BILLPRODUCT" MODIFY ("BILLPRODUCT_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table CART
+--------------------------------------------------------
 
-INSERT INTO user_table VALUES (31,'China - Tokyo - Mexico - Horykito','Mr. Admin',1,NULL,'$2a$10$KUTALTEnUXSZheyYXKyZw.mPIFgnwHxhyieKIrwRbrskBKPV.8u/u','0999999999',1,'1608484153089.png','admin@gmail.com',1);
+  ALTER TABLE "VN_JAVA2"."CART" ADD PRIMARY KEY ("CART_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+  ALTER TABLE "VN_JAVA2"."CART" MODIFY ("CART_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table CATEGORY
+--------------------------------------------------------
+
+  ALTER TABLE "VN_JAVA2"."CATEGORY" ADD PRIMARY KEY ("CATEGORY_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+  ALTER TABLE "VN_JAVA2"."CATEGORY" MODIFY ("CATEGORY_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table ITEM
+--------------------------------------------------------
+
+  ALTER TABLE "VN_JAVA2"."ITEM" ADD PRIMARY KEY ("ITEM_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+  ALTER TABLE "VN_JAVA2"."ITEM" MODIFY ("ITEM_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table ORDER_USER
+--------------------------------------------------------
+
+  ALTER TABLE "VN_JAVA2"."ORDER_USER" ADD PRIMARY KEY ("ORDER_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+  ALTER TABLE "VN_JAVA2"."ORDER_USER" MODIFY ("ORDER_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table PRODUCT
+--------------------------------------------------------
+
+  ALTER TABLE "VN_JAVA2"."PRODUCT" ADD PRIMARY KEY ("PRODUCT_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+  ALTER TABLE "VN_JAVA2"."PRODUCT" MODIFY ("PRODUCT_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table ROLE_TABLE
+--------------------------------------------------------
+
+  ALTER TABLE "VN_JAVA2"."ROLE_TABLE" ADD PRIMARY KEY ("ROLE_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+  ALTER TABLE "VN_JAVA2"."ROLE_TABLE" MODIFY ("ROLE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table SALE
+--------------------------------------------------------
+
+  ALTER TABLE "VN_JAVA2"."SALE" ADD PRIMARY KEY ("SALE_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+  ALTER TABLE "VN_JAVA2"."SALE" MODIFY ("SALE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table USER_TABLE
+--------------------------------------------------------
+
+  ALTER TABLE "VN_JAVA2"."USER_TABLE" ADD PRIMARY KEY ("USER_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+  ALTER TABLE "VN_JAVA2"."USER_TABLE" MODIFY ("USER_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Ref Constraints for Table BILL
+--------------------------------------------------------
+
+  ALTER TABLE "VN_JAVA2"."BILL" ADD CONSTRAINT "FK9S5C64GU6QAQ0CQKP4KU7QRVJ" FOREIGN KEY ("USER_ID")
+	  REFERENCES "VN_JAVA2"."USER_TABLE" ("USER_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table BILLPRODUCT
+--------------------------------------------------------
+
+  ALTER TABLE "VN_JAVA2"."BILLPRODUCT" ADD CONSTRAINT "FKAIY9JK09OWHMSYPYTXS595H4P" FOREIGN KEY ("PRODUCT_ID")
+	  REFERENCES "VN_JAVA2"."PRODUCT" ("PRODUCT_ID") ENABLE;
+  ALTER TABLE "VN_JAVA2"."BILLPRODUCT" ADD CONSTRAINT "FKFK6MRXSFMR4HTSC8LY6QUQAG8" FOREIGN KEY ("BILL_ID")
+	  REFERENCES "VN_JAVA2"."BILL" ("BILL_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table CART
+--------------------------------------------------------
+
+  ALTER TABLE "VN_JAVA2"."CART" ADD CONSTRAINT "FK3D704SLV66TW6X5HMBM6P2X3U" FOREIGN KEY ("PRODUCT_ID")
+	  REFERENCES "VN_JAVA2"."PRODUCT" ("PRODUCT_ID") ENABLE;
+  ALTER TABLE "VN_JAVA2"."CART" ADD CONSTRAINT "FK9HX78HT3JDQA6QIDU45XMD5BO" FOREIGN KEY ("USER_ID")
+	  REFERENCES "VN_JAVA2"."USER_TABLE" ("USER_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table ITEM
+--------------------------------------------------------
+
+  ALTER TABLE "VN_JAVA2"."ITEM" ADD CONSTRAINT "FKD1G72RRHGQ1SF7M4UWFVUHLHE" FOREIGN KEY ("PRODUCT_ID")
+	  REFERENCES "VN_JAVA2"."PRODUCT" ("PRODUCT_ID") ENABLE;
+  ALTER TABLE "VN_JAVA2"."ITEM" ADD CONSTRAINT "FKGCHEKFE52EC7YN35D393M91OL" FOREIGN KEY ("ORDER_ID")
+	  REFERENCES "VN_JAVA2"."ORDER_USER" ("ORDER_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table ORDER_USER
+--------------------------------------------------------
+
+  ALTER TABLE "VN_JAVA2"."ORDER_USER" ADD CONSTRAINT "FK3X68YS74UN97AY833LQX32LSO" FOREIGN KEY ("USER_ID")
+	  REFERENCES "VN_JAVA2"."USER_TABLE" ("USER_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table PRODUCT
+--------------------------------------------------------
+
+  ALTER TABLE "VN_JAVA2"."PRODUCT" ADD CONSTRAINT "FK1MTSBUR82FRN64DE7BALYMQ9S" FOREIGN KEY ("CATEGORY_ID")
+	  REFERENCES "VN_JAVA2"."CATEGORY" ("CATEGORY_ID") ENABLE;
+  ALTER TABLE "VN_JAVA2"."PRODUCT" ADD CONSTRAINT "FKTGPFNKN7ETMFUMAKC3IQ75E95" FOREIGN KEY ("SALE_ID")
+	  REFERENCES "VN_JAVA2"."SALE" ("SALE_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table USER_TABLE
+--------------------------------------------------------
+
+  ALTER TABLE "VN_JAVA2"."USER_TABLE" ADD CONSTRAINT "FK2KHYE3LLDNMBJJKFDUG9K3FP4" FOREIGN KEY ("ROLE_ID")
+	  REFERENCES "VN_JAVA2"."ROLE_TABLE" ("ROLE_ID") ENABLE;

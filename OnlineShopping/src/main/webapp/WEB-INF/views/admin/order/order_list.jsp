@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard | Klorofil - Free Bootstrap Dashboard Template</title>
+<title>Order List</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport"
@@ -59,14 +59,6 @@
 										<div class="panel">
 											<div class="panel-heading">
 												<h3 class="panel-title">ORDER LIST</h3>
-												<div class="right">
-													<button type="submit">
-														<span class="label label-danger"
-															style="font-size: 15px; margin-right: 15px;">Delete</span>
-													</button>
-													<a href="#"><span class="label label-success"
-														style="font-size: 15px;">Create new order</span></a>
-												</div>
 											</div>
 											<div class="panel-body no-padding">
 												<table class="table table-striped" style="margin: auto;">
@@ -91,7 +83,7 @@
 																	style="cursor: pointer;" /></td>
 																<td style="vertical-align: middle;">No.
 																	${order.orderId}</td>
-																<td>${order.user.email.split("@")[0]}</td>
+																<td>${order.buyer.email.split("@")[0]}</td>
 																<td>$${order.priceTotal}0</td>
 																<td>${order.buyDate}</td>
 																<c:if test="${order.status eq 'PENDING'}">
@@ -115,7 +107,7 @@
 										<nav aria-label="Page navigation example"
 											style="margin-top: -30px;">
 											<ul class="pagination">
-												<c:if test="${totalPage}>0">
+												<c:if test="${totalPage>0}">
 													<c:forEach begin="0" end="${totalPage - 1}" var="i">
 														<li class="page-item"><a class="page-link"
 															<c:if test="${i == pageIndex}">

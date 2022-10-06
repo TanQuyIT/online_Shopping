@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard | Klorofil - Free Bootstrap Dashboard Template</title>
+<title>Product List</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport"
@@ -58,27 +58,16 @@
 												<div class="panel-heading">
 													<h3 class="panel-title">PRODUCT LIST</h3>
 													<p class="demo-button">
-														<a class="btn btn-default" href="product-list"
-															style="padding: 4px 8px; text-decoration: none; border: none; box-shadow: 2px 2px gray; font-weight: bold;">All
-															Product</a> <a class="btn btn-success"
-															href="product-list-by-category?categoryId=3"
-															style="background-color: #41B314; padding: 4px 8px; text-decoration: none; border: none; margin-left: 7px;">Vans
-															ERA</a> <a class="btn btn-info"
-															href="product-list-by-category?categoryId=2"
-															style="background-color: #E4CB10; padding: 4px 8px; text-decoration: none; border: none; margin-left: 5px;">Vans
-															classic</a> <a class="btn btn-primary"
-															href="product-list-by-category?categoryId=1"
-															style="background-color: #00AAFF; padding: 4px 8px; text-decoration: none; border: none; margin-left: 5px;">Vans
-															authentic</a> <a class="btn btn-warning"
-															href="product-list-by-category?categoryId=4"
-															style="background-color: #D9534F; padding: 4px 8px; text-decoration: none; border: none; margin-left: 5px;">Vans
-															old skool</a> <a class="btn btn-danger"
-															href="product-list-by-category?categoryId=5"
-															style="background-color: #5BC0DE; padding: 4px 8px; text-decoration: none; border: none; margin-left: 5px;">Vans
-															SK8</a> <a class="btn btn-danger"
-															href="product-list-by-category?categoryId=6"
-															style="background-color: gray; padding: 4px 8px; text-decoration: none; border: none; margin-left: 5px;">Vans
-															slip-on</a>
+														<a class="btn btn-success" href="product-list"
+															style="padding: 4px 8px; text-decoration: none; border: none;">All
+															Product</a>
+														<c:forEach items="${sessionScope.categories}"
+															var="category">
+															<a class="btn btn-default"
+																href="product-list-by-category?categoryId=${category.categoryId}"
+																style="padding: 4px 8px; text-decoration: none; border: none; margin-left: 7px;">${category.categoryName}</a>
+
+														</c:forEach>
 													</p>
 													<div class="right">
 														<button type="submit">
@@ -144,7 +133,7 @@
 											<nav aria-label="Page navigation example"
 												style="margin-top: -30px;">
 												<ul class="pagination">
-													<c:if test="${totalPage}>0">
+													<c:if test="${totalPage>0}">
 														<c:forEach begin="0" end="${totalPage-1}" var="i">
 															<li class="page-item"><a class="page-link"
 																href="product-list?pageIndex=${i}"

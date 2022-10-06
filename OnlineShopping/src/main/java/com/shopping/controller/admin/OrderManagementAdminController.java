@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shopping.dao.ItemDAO;
 import com.shopping.dao.OrderDAO;
@@ -54,12 +55,11 @@ public class OrderManagementAdminController {
 	
 	@GetMapping(value = "order-update")
 	public String orderUpdate(HttpServletRequest request) {
-		int pageIndex = Integer.parseInt(request.getParameter("pageIndex"));
 		long orderId = Long.parseLong(request.getParameter("orderId"));
-		Order order = orderDAO.findById(orderId);
+		Order order = orderDAO.find(orderId);
 		order.setStatus("SUCCESS");
 		orderDAO.update(order);
-		return "redirect:../admin/order-list?pageIndex=" + pageIndex;
+		return "redirect:/admin/order-list";
 	}
 	
 	@GetMapping(value = "order-details")

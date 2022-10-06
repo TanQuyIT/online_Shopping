@@ -8,7 +8,7 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="../resource/client/images/favicon.png">
-<title>Welcome to FlatShop</title>
+<title>Shopping Cart</title>
 <link href="/resource/client/css/bootstrap.css" rel="stylesheet">
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,100italic,100'
@@ -21,7 +21,6 @@
 <link href="/resource/client/css/style.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
-<!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script><![endif]-->
 </head>
 <body id="home">
 	<div class="wrapper">
@@ -125,9 +124,9 @@
 												value="${sessionScope.user.address}" style="color: red;"
 												readonly="readonly" /> <label> Phone number * </label> <input
 												type="text" name="" value="${sessionScope.user.phone}"
-												style="color: red;" readonly="readonly" /> <label>
-												Change of shipping address * </label>
+												style="color: red;" readonly="readonly" />
 											<c:if test="${sessionScope.user != null}">
+												<label> Change of shipping address * </label>
 												<a href="profile"><button>Go To Profile</button></a>
 											</c:if>
 										</div>
@@ -141,7 +140,7 @@
 													value="There are currently no discount codes."
 													style="color: red;" readonly="readonly" />
 												<div class="clearfix"></div>
-												<button>Get A Qoute</button>
+												<button>Get It</button>
 											</form>
 										</div>
 									</div>

@@ -48,8 +48,6 @@ public class CartClientController {
 		return "client/cart"; 
 	}
 	
-	// Add product to cart
-	
 	@GetMapping(value = "/add-to-cart")
 	public String addToCart(HttpServletRequest request, HttpSession session,
 			@RequestParam(name = "productId") long productId) {
@@ -119,8 +117,6 @@ public class CartClientController {
 
 		return "redirect:../client/cart";
 	}
-	
-	// Detele product from cart
 	
 	@GetMapping(value = "/delete-from-cart")
 	public String deleteFromCart(HttpServletRequest request, HttpSession session,

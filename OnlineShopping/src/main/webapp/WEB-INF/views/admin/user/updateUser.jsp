@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard | Klorofil - Free Bootstrap Dashboard Template</title>
+<title>Update User</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport"
@@ -121,7 +121,7 @@
 										<td><select name="roleId">
 												<c:forEach items="${roles}" var="role">
 													<option value="${role.roleId}"
-														<c:if test="${user.roleDTO.roleId == role.roleId}">
+														<c:if test="${user.role.roleId == role.roleId}">
 														selected="selected"
 														</c:if>>${role.roleName}</option>
 												</c:forEach>

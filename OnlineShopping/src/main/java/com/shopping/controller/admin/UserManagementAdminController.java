@@ -25,15 +25,11 @@ import com.shopping.model.User;
 @RequestMapping("/admin")
 public class UserManagementAdminController {
 
-	// User Manager
-
 	@Autowired
 	private UserDAO userDAO;
 
 	@Autowired
 	private RoleDAO roleDAO;
-
-	// Show all users
 
 	@GetMapping("/user-list")
 	public String userList(HttpServletRequest request) {
@@ -56,8 +52,6 @@ public class UserManagementAdminController {
 		request.setAttribute("users", userDAO.findAll(pageIndex, pageSize));
 		return "admin/user/listUser";
 	}
-
-	// Create new account
 
 	@GetMapping(value = "/user-create")
 	public String userCreate(HttpServletRequest request) {
@@ -95,7 +89,7 @@ public class UserManagementAdminController {
 				int lastIndex = originalFilename.lastIndexOf(".");
 				String ext = originalFilename.substring(lastIndex);
 				String avatarFilename = System.currentTimeMillis() + ext;
-				File newfile = new File("C:\\image_spring_boot\\" + avatarFilename);
+				File newfile = new File("C:\\online_shopping_image\\" + avatarFilename);
 				FileOutputStream fileOutputStream;
 				try {
 					fileOutputStream = new FileOutputStream(newfile);
@@ -120,8 +114,6 @@ public class UserManagementAdminController {
 		}
 
 	}
-
-	// Update user
 
 	@GetMapping(value = "user-update")
 	public String userUpdate(HttpServletRequest request, @RequestParam(name = "userId") long userId) {
@@ -153,12 +145,13 @@ public class UserManagementAdminController {
 			int lastIndex = originalFilename.lastIndexOf(".");
 			String ext = originalFilename.substring(lastIndex);
 			String avatarFilename = System.currentTimeMillis() + ext;
-			File newfile = new File("C:\\image_spring_boot\\" + avatarFilename);
+			File newfile = new File("C:\\online_shopping_image\\" + avatarFilename);
 			FileOutputStream fileOutputStream;
 			try {
 				fileOutputStream = new FileOutputStream(newfile);
 				fileOutputStream.write(avatarFile.getBytes());
 				fileOutputStream.close();
+				System.out.println("--------------------");
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -177,8 +170,6 @@ public class UserManagementAdminController {
 			return "admin/user/updateUser";
 		}
 	}
-
-	// Delete user
 
 	@GetMapping(value = "/user-delete")
 	public String userDelete(HttpServletRequest request) {

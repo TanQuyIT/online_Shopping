@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard | Klorofil - Free Bootstrap Dashboard Template</title>
+<title>Order Detail</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport"
@@ -85,7 +85,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${items}" var="item">
+									<c:forEach items="${order.items}" var="item">
 										<tr>
 											<td><a
 												href="product-details?productId=${item.product.productId}"><img
@@ -98,7 +98,7 @@
 														<a class="review_num" href="#"> 02 Review(s) </a>
 													</p>
 
-													<p>${product.description}</p>
+													<p>${item.product.description}</p>
 													<p>
 														Sale : <strong class="pcode">-${item.product.sale.salePercent}%</strong>
 													</p>
@@ -151,8 +151,8 @@
 													style="margin-top: -35px; color: #00ACC1; margin-right: 1px;">&#xe0c8;</i>
 												<i class="title"
 													style="font-size: 17px; color: #00ACC1; font-weight: bold; margin-top: -30px;">
-													${order.user.fullname} * ${order.user.address} *
-													${order.user.phone}</i><br />
+													${order.buyer.fullname} * ${order.buyer.address} *
+													${order.buyer.phone}</i><br />
 											</p></td>
 									</tr>
 								</tfoot>

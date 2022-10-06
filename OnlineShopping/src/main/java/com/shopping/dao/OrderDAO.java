@@ -120,8 +120,10 @@ public class OrderDAO {
 	}
 
 	public Order findById(long orderId) {
+		Order order = null;
 		Session session = sessionFactory.openSession();
-		return (Order) session.get(Order.class, orderId);
+		order = (Order) session.get(Order.class, orderId);
+		return order;
 	}
 
 }

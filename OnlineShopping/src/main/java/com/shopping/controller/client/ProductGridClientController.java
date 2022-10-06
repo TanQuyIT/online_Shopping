@@ -19,7 +19,6 @@ public class ProductGridClientController {
 	
 	@Autowired
 	private ProductDAO productDAO;
-	// Show product by category id (grid)
 	
 	@GetMapping(value = "/product-grid")
 	public String productGrid(HttpServletRequest request, @RequestParam(name = "categoryId") long categoryId) {

@@ -31,7 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.formLogin().loginPage("/login").loginProcessingUrl("/login").usernameParameter("account")
 				.passwordParameter("password").defaultSuccessUrl("/home")
 				.failureUrl("/login?err=Something went wrong, please try again.").permitAll();
-		http.logout().logoutSuccessUrl("/login").permitAll();
+		http.logout().logoutSuccessUrl("/").permitAll();
 	}
 
 }

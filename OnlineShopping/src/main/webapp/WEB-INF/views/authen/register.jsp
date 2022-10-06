@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Register</title>
 <link rel="stylesheet"
 	href="<c:url value='/resource/common/authen.css'/>">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>

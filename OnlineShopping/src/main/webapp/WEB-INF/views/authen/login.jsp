@@ -24,7 +24,7 @@
 				<div class="auth-form-form" style="margin-top: 15px;">
 					<div class="auth-form-group">
 						<input class="auth-form-input" type="text" name="account"
-							placeholder="Email or Phone" required="required" />
+							placeholder="Email" required="required" />
 					</div>
 					<div class="auth-form-group">
 						<input class="auth-form-input" type="password" name="password"

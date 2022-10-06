@@ -19,17 +19,17 @@ public class LoginController {
 		return "authen/login";
 	}
 
-	@GetMapping(value = "/home") // chuyen den home khi dang nhap thanh cong
+	@GetMapping(value = "/home")
 	public String loginSuccess(HttpServletRequest request, HttpSession session) {
 		UserPrincipal userPrincipal = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
 		session.setAttribute("user", userPrincipal);
 		String username = userPrincipal.getEmail();
 		session.setAttribute("username", username.split("@")[0]);
-		if (request.isUserInRole("ADMIN")) { // neu role la admin thi chuyen den trang admin
+		if (request.isUserInRole("ADMIN")) {
 			return "redirect:/admin/home";
 		} else {
-			return "redirect:/client/home"; // khong phai admin chuyen den trang client
+			return "redirect:/client/home";
 		}
 	}
 

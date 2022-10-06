@@ -19,7 +19,12 @@ public class HomeClientController {
 	@Autowired
 	private ProductDAO productDAO;
 
-	@GetMapping(value = { "/client/home", "/", "/client", "/home" })
+	@GetMapping(value = { "/", "/client", "" })
+	public String redirectHome(HttpServletRequest request, HttpSession session) {
+		return "redirect:/client/home";
+	}
+
+	@GetMapping(value = "/client/home")
 	public String home(HttpServletRequest request, HttpSession session) {
 		request.setAttribute("hotOne", productDAO.hotProducts(0, 4));
 		request.setAttribute("hotTwo", productDAO.hotProducts(1, 4));

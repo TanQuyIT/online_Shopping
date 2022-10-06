@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard | Klorofil - Free Bootstrap Dashboard Template</title>
+<title>Dashboard</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport"
@@ -128,7 +128,7 @@
 													<c:forEach items="${orders}" var="order">
 														<tr>
 															<td><a href="#">No. ${order.orderId}</a></td>
-															<td>${order.user.email.split("@")[0]}</td>
+															<td>${order.buyer.email.split("@")[0]}</td>
 															<td>$${order.priceTotal}0</td>
 															<td>${order.buyDate}</td>
 															<c:if test="${order.status eq 'PENDING'}">

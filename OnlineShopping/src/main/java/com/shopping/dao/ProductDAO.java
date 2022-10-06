@@ -137,7 +137,7 @@ public class ProductDAO {
 
 	public List<Product> featuredProducts(int pageIndex, int pageSize) {
 		Session session = sessionFactory.openSession();
-		String sql = "SELECT p FROM Product p WHERE p.category.categoryId = 6 ORDER BY p.price DESC";
+		String sql = "SELECT p FROM Product p WHERE p.category.categoryId = 1 ORDER BY p.price DESC";
 		int first = pageIndex * pageSize;
 		Query query = session.createQuery(sql).setFirstResult(first).setMaxResults(pageSize);
 		return query.list();

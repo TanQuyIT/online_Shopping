@@ -22,27 +22,24 @@ import com.shopping.model.Category;
 import com.shopping.model.Product;
 import com.shopping.model.Sale;
 
-// Product Manager
-
 @Controller
 @RequestMapping(value = "/admin")
 public class ProductManagementAdminController {
-	
+
 	@Autowired
 	private ProductDAO productDAO;
-	
+
 	@Autowired
 	private SaleDAO saleDAO;
-	
+
 	@Autowired
 	private CategoryDAO categoryDAO;
-	
-	// Show all product
+
 	@GetMapping(value = "/product-list")
 	public String findAll(HttpServletRequest request) {
 		int pageIndex = 0;
 		int pageSize = 5;
-		
+
 		if (request.getParameter("pageIndex") != null) {
 			pageIndex = Integer.parseInt(request.getParameter("pageIndex"));
 		}
@@ -53,21 +50,20 @@ public class ProductManagementAdminController {
 		} else {
 			totalPage = count / pageSize + 1;
 		}
-		
+
 		request.setAttribute("default", "default");
 		request.setAttribute("pageIndex", pageIndex);
 		request.setAttribute("totalPage", totalPage);
-		request.setAttribute("products", productDAO.findAll(pageIndex ,pageSize));
+		request.setAttribute("category", categoryDAO.findAll());
+		request.setAttribute("products", productDAO.findAll(pageIndex, pageSize));
 		return "admin/product/listProduct";
 	}
-	
-	// Show all product by category
-	
+
 	@GetMapping(value = "/product-list-by-category")
 	public String findAllByCategory(HttpServletRequest request, @RequestParam(name = "categoryId") long categoryId) {
 		int pageIndex = 0;
 		int pageSize = 5;
-		
+
 		if (request.getParameter("pageIndex") != null) {
 			pageIndex = Integer.parseInt(request.getParameter("pageIndex"));
 		}
@@ -78,30 +74,26 @@ public class ProductManagementAdminController {
 		} else {
 			totalPage = count / pageSize + 1;
 		}
-		
+
 		request.setAttribute("categoryId", categoryId);
 		request.setAttribute("pageIndex", pageIndex);
 		request.setAttribute("totalPage", totalPage);
 		request.setAttribute("products", productDAO.findAllByCategoryId(categoryId, pageIndex, pageSize));
 		return "admin/product/listProductByCategory";
 	}
-	
-	// Create new product
-	
+
 	@GetMapping(value = "/product-create")
 	public String insert(HttpServletRequest request) {
 		request.setAttribute("categories", categoryDAO.findAll());
 		request.setAttribute("sales", saleDAO.findAll());
 		return "admin/product/createNewProduct";
 	}
-	
+
 	@PostMapping(value = "/product-create")
 	public String insertPost(HttpServletRequest request, @RequestParam(name = "categoryId") long categoryId,
 			@RequestParam(name = "productName") String productName,
-			@RequestParam(name = "description") String description,
-			@RequestParam(name = "price") float price,
-			@RequestParam(name = "quantity") int quantity,
-			@RequestParam(name = "saleId") String saleId,
+			@RequestParam(name = "description") String description, @RequestParam(name = "price") float price,
+			@RequestParam(name = "quantity") int quantity, @RequestParam(name = "saleId") String saleId,
 			@RequestParam(name = "imageFile") MultipartFile imageFile) {
 		Category category = new Category();
 		category.setCategoryId(categoryId);
@@ -119,7 +111,7 @@ public class ProductManagementAdminController {
 			int lastIndex = originalFilename.lastIndexOf(".");
 			String ext = originalFilename.substring(lastIndex);
 			String avatarFilename = System.currentTimeMillis() + ext;
-			File newfile = new File("C:\\image_spring_boot\\" + avatarFilename);
+			File newfile = new File("C:\\online_shopping_image\\" + avatarFilename);
 			FileOutputStream fileOutputStream;
 			try {
 				fileOutputStream = new FileOutputStream(newfile);
@@ -132,14 +124,11 @@ public class ProductManagementAdminController {
 			}
 			product.setImage(avatarFilename);
 		}
-		
+
 		productDAO.insert(product);
 		return "redirect:../admin/product-list";
 	}
-	
-	
-	// Update product
-	
+
 	@GetMapping(value = "/product-update")
 	public String update(HttpServletRequest request, @RequestParam(name = "productId") long productId) {
 		request.setAttribute("product", productDAO.findById(productId));
@@ -147,20 +136,19 @@ public class ProductManagementAdminController {
 		request.setAttribute("categories", categoryDAO.findAll());
 		return "admin/product/updateProduct";
 	}
-	
+
 	@PostMapping(value = "/product-update")
-	public String update(HttpServletRequest request,
-			@RequestParam(name = "newPrice", required = false) String newPrice,
+	public String update(HttpServletRequest request, @RequestParam(name = "newPrice", required = false) String newPrice,
 			@RequestParam(name = "imageFile", required = false) MultipartFile imageFile) {
 		long productId = Long.parseLong(request.getParameter("productId"));
-		long categoryId = Long.parseLong(request.getParameter("categoryId")); 
+		long categoryId = Long.parseLong(request.getParameter("categoryId"));
 		float oldprice = Float.parseFloat(request.getParameter("oldPrice"));
 		String productName = request.getParameter("productName");
 		String description = request.getParameter("description");
 		int quantity = Integer.parseInt(request.getParameter("quantity"));
 		String image = request.getParameter("image");
 		String saleId = request.getParameter("saleId");
-		
+
 		Sale sale = new Sale();
 		sale.setSaleId(saleId);
 		Category category = new Category();
@@ -182,7 +170,7 @@ public class ProductManagementAdminController {
 			int lastIndex = originalFilename.lastIndexOf(".");
 			String ext = originalFilename.substring(lastIndex);
 			String avatarFilename = System.currentTimeMillis() + ext;
-			File newfile = new File("C:\\image_spring_boot\\" + avatarFilename);
+			File newfile = new File("C:\\online_shopping_image\\" + avatarFilename);
 			FileOutputStream fileOutputStream;
 			try {
 				fileOutputStream = new FileOutputStream(newfile);
@@ -197,13 +185,11 @@ public class ProductManagementAdminController {
 		} else {
 			product.setImage(image);
 		}
-		
+
 		productDAO.update(product);
 		return "redirect:/admin/product-list";
 	}
-	
-	// Delete Product
-	
+
 	@GetMapping(value = "/product-delete")
 	public String delete(HttpServletRequest request) {
 		String[] productIds = request.getParameterValues("productId");
